@@ -44,7 +44,7 @@ public class App{
         
         for (int i = 0; i < 128; i++) {
             System.out.printf("%c %d | %d | %d", i  , count1[i],count2[i],count3[i]);
-            System.out.println( "");
+            System.out.println("");
             
         }
         readFirst.close();
