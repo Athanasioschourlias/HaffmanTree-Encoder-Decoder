@@ -14,8 +14,9 @@ public class Read
 
     File In_file;
     BufferedReader read_file;
-    //private String file;
-    public Read(String file) throws FileNotFoundException {
+   
+    public Read(String file) throws FileNotFoundException 
+    {
 
         this.In_file = new File(file);
         this.read_file = new BufferedReader(new FileReader (In_file));
@@ -36,7 +37,8 @@ public class Read
               count[ch]++;
             }
         }
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0; i < 128; i++) 
+        {
            
             System.out.printf("%c %d", i  , count[i]);
             System.out.println("");
@@ -45,7 +47,8 @@ public class Read
         whichFile++;
     }
 
-    public void exit_file() throws IOException {
+    public void exit_file() throws IOException 
+    {
         read_file.close();
     }
 }

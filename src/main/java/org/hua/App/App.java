@@ -6,20 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class App{
-    public static void main(String[] args) throws IOException {
-
-        System.out.println("Letter Frequency A , B , C ");
-
-        //int nextChar;
-        //char ch = 0;
+    public static void main(String[] args) throws IOException 
+    {
         Read r = new Read("input.txt");
         Read r2 = new Read("input2.txt");
         Read r3 = new Read("input3.txt");
-        
-        /*int[] count1 = new int[128];
-        int[] count2 = new int[128];
-        int[] count3 = new int[128];
-        */
 
         //calling the method to read the file and saw the results to the user
         r.ReadCounter();
