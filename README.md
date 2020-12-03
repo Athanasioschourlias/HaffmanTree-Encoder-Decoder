@@ -5,8 +5,11 @@
    
 2. Every bit of code you write comment it, so it will be easier
    for other developers to follow your code.
-   
-3. Never But never work at the main branch, when you are working
+
+3. Develop with the object oriented programming mindset,DO NOT
+   add new features at the main(App class).
+
+4. Never But never work at the main branch, when you are working
    on adding a new feature.The naming of the brunches will be
    convinient for the other to be relavent with the feature you
    are working on.

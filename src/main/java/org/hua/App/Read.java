@@ -1,29 +1,34 @@
 
 package org.hua.App;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Read 
 {
-
-    //private String file;
-    public Read()
-    {
-    }
     //File file = new File();
-    int[] count = new int[128];
-    char ch;
-    int nextChar;
-    int whichFile=1;
-    //BufferedReader readFile = new BufferedReader (new FileReader (file));
-    public void ReadCounter(BufferedReader readFile) throws IOException
+    private int[] count = new int[128];
+    private char ch;
+    private int nextChar;
+    private int whichFile=1;
+
+
+    File In_file;
+    BufferedReader read_file;
+    //private String file;
+    public Read(String file) throws FileNotFoundException {
+
+        this.In_file = new File(file);
+        this.read_file = new BufferedReader(new FileReader (In_file));
+
+
+    }
+
+
+
+    public void ReadCounter() throws IOException
     {
-        
-        
-        while ((nextChar = readFile.read()) != -1) 
+        System.out.println("These results are from file"+whichFile);
+        while ((nextChar = read_file.read()) != -1)
         {
             ch = ((char) nextChar);
             if (ch > 0 && ch <= 127) 
@@ -37,8 +42,11 @@ public class Read
             System.out.println("");
             
         }
-        System.out.println("These results are from file"+whichFile);
         whichFile++;
+    }
+
+    public void exit_file() throws IOException {
+        read_file.close();
     }
 }
 
