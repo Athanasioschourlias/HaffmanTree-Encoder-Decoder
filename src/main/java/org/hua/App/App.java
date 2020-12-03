@@ -18,7 +18,7 @@ public class App{
         r3.ReadCounter();
         
         //calling the exit method at the end of the app to close the file.
-        r.exit_file();
+        r.exitFile();
         
     }
 }

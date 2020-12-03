@@ -25,12 +25,13 @@ public class Read
     }
 
 
-    //
     public void ReadCounter() throws IOException
     {
         System.out.println("These results are from file "+whichFile);
+        //reading each character in the file
         while ((nextChar = readFile.read()) != -1)
         {
+            //increasing the counter of each character from the ASCII table
             ch = ((char) nextChar);
             if (ch > 0 && ch <= 127) 
             {
@@ -47,7 +48,7 @@ public class Read
         whichFile++;
     }
 
-    public void exit_file() throws IOException 
+    public void exitFile() throws IOException 
     {
         readFile.close();
     }
