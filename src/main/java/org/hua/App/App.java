@@ -12,7 +12,7 @@ public class App{
         Read r2 = new Read("input2.txt");
         Read r3 = new Read("input3.txt");
 
-        //calling the method to read the file and saw the results to the user
+        //calling the method to read the file and show the results to the user
         r.ReadCounter();
         r2.ReadCounter();
         r3.ReadCounter();
