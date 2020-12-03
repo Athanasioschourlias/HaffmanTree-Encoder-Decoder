@@ -16,38 +16,19 @@ public class App{
         BufferedReader readThird = new BufferedReader (new FileReader (file3));
         System.out.println("Letter Frequency A , B , C ");
 
-        int nextChar;
-        char ch;
-
-        int[] count1 = new int[128];
+        //int nextChar;
+        //char ch = 0;
+        Read r = new Read();
+        
+        /*int[] count1 = new int[128];
         int[] count2 = new int[128];
         int[] count3 = new int[128];
+        */
 
-        while ((nextChar = readFirst.read()) != -1) {
-
-            ch = ((char) nextChar);
-            if (ch > 0 && ch <= 127)
-                count1[ch ]++;
-        }
-        while ((nextChar = readSecond.read()) != -1) {
-
-            ch = ((char) nextChar);
-            if (ch > 0 && ch <= 127)
-                count2[ch ]++;
-        }
-        while ((nextChar = readThird.read()) != -1) {
-
-            ch = ((char) nextChar);
-            if (ch > 0 && ch <= 127)
-                count3[ch ]++;
-        }
+        r.ReadCounter(readFirst);
+        r.ReadCounter(readSecond);
+        r.ReadCounter(readThird);
         
-        for (int i = 0; i < 128; i++) {
-           
-            System.out.printf("%c %d | %d | %d", i  , count1[i],count2[i],count3[i]);
-            System.out.println("");
-            
-        }
         readFirst.close();
         readSecond.close();
         readThird.close();
