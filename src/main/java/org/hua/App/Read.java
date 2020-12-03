@@ -9,7 +9,7 @@ public class Read
     private int[] count = new int[128];
     private char ch;
     private int nextChar;
-    private int whichFile=1;
+    public static int whichFile=1;
 
 
     File In_file;
@@ -27,7 +27,7 @@ public class Read
 
     public void ReadCounter() throws IOException
     {
-        System.out.println("These results are from file"+whichFile);
+        System.out.println("These results are from file "+whichFile);
         while ((nextChar = read_file.read()) != -1)
         {
             ch = ((char) nextChar);

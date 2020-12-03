@@ -13,6 +13,8 @@ public class App{
         //int nextChar;
         //char ch = 0;
         Read r = new Read("input.txt");
+        Read r2 = new Read("input2.txt");
+        Read r3 = new Read("input3.txt");
         
         /*int[] count1 = new int[128];
         int[] count2 = new int[128];
@@ -21,7 +23,9 @@ public class App{
 
         //calling the method to read the file and saw the results to the user
         r.ReadCounter();
-
+        r2.ReadCounter();
+        r3.ReadCounter();
+        
         //calling the exit method at the end of the app to close the file.
         r.exit_file();
         
