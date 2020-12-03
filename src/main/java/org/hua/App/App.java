@@ -1,7 +1,6 @@
 package org.hua.App;
 //hello world 
 //geia sou paidaki 
-//kalispera
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
