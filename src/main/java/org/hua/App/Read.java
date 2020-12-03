@@ -19,7 +19,7 @@ public class Read
     {
 
         this.In_file = new File(file);
-        this.read_file = new BufferedReader(new FileReader (In_file));
+        this.readFile = new BufferedReader(new FileReader (In_file));
 
 
     }
@@ -29,7 +29,7 @@ public class Read
     public void ReadCounter() throws IOException
     {
         System.out.println("These results are from file "+whichFile);
-        while ((nextChar = read_file.read()) != -1)
+        while ((nextChar = readFile.read()) != -1)
         {
             ch = ((char) nextChar);
             if (ch > 0 && ch <= 127) 
@@ -49,7 +49,7 @@ public class Read
 
     public void exit_file() throws IOException 
     {
-        read_file.close();
+        readFile.close();
     }
 }
 
