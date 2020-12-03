@@ -12,14 +12,14 @@ public class Read
     public static int whichFile=1;
 
 
-    File In_file;
-    BufferedReader read_file;
+    File InFile;
+    BufferedReader readFile;
    
     public Read(String file) throws FileNotFoundException 
     {
 
-        this.In_file = new File(file);
-        this.readFile = new BufferedReader(new FileReader (In_file));
+        this.InFile = new File(file);
+        this.readFile = new BufferedReader(new FileReader (InFile));
 
 
     }
