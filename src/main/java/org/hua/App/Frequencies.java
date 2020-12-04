@@ -3,21 +3,18 @@ package org.hua.App;
 
 import static java.nio.file.StandardOpenOption.*;
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Frequencies
 {
-    //File file = new File();
-    private int[] count = new int[128];
+    private final int[] count = new int[128];
     private char ch;
-    private  int nextChar;
-    private static int whichFile=1;
-    private File InFile;
-    private BufferedReader readFile;
+    private int nextChar;
+    private final File InFile;
+//    private static int whichFile=1;
+    private final BufferedReader readFile;
     private OutputStream out;
 
     public Frequencies(String file) throws IOException
@@ -71,9 +68,6 @@ public class Frequencies
 
             {
 
-                System.out.printf("%c %d", i  , count[i]);
-                System.out.println("");
-
                 String s = String.valueOf(count[i]);
                 byte[] d = s.getBytes();
                 out.write(d);
@@ -88,24 +82,8 @@ public class Frequencies
             System.err.println(x);
 
         }
+        out.close();
 
-        //An other method
-//        ReadCounter();
-//        File fout = new File("out.dat");
-//        FileOutputStream fos = new FileOutputStream(fout);
-//
-//        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-//
-//        for (int i = 0; i < 128; i++) {
-//
-//            System.out.printf("%c %d", i  , count[i]);
-//                System.out.println("");
-//            String s = String.valueOf(count[i]);
-//            bw.write(s);
-//            bw.newLine();
-//        }
-//
-//        bw.close();
 
     }
 
@@ -160,7 +138,7 @@ public class Frequencies
 //
 //        }
 
-        whichFile++;
+//        whichFile++;
 
         /**
          * Releasing System Resources:

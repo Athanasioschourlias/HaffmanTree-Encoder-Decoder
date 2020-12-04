@@ -10,14 +10,10 @@ public class App{
         Frequencies r2 = new Frequencies("input2.txt");
         Frequencies r3 = new Frequencies("input3.txt");
 
-//        //calling the method to read the file and show the results to the user
-//        r.ReadCounter();
-//        r2.ReadCounter();
-//        r3.ReadCounter();
 
         
         //calling the exit method at the end of the app to close the file.
         //TODO:DELETE THE FILE WE CREATED FOR THE FREQUENCIES
-        
+
     }
 }
