@@ -20,7 +20,7 @@ public class Frequencies
 
         this.ch = 0;
         this.nextChar = 0;
-        /**
+        /*
          * By adding this bit of code we try to give the user a better understanding
          * of what went wrong.Alongside with the exeption the user will see a message
          * which describes to the user some of the most likely reasons the execution
@@ -37,7 +37,7 @@ public class Frequencies
     }
 
     public void writeFile() throws IOException {
-        /**
+        /*
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
          * The file name is hardcoded because of the exercise's explenation.
          */
@@ -99,7 +99,7 @@ public class Frequencies
 
     private void ReadCounter() throws IOException {
 
-        /**
+        /*
          * Preferred way from java documentation,Reading a File by Using Buffered Stream I/O.
          */
         try (BufferedReader reader = new BufferedReader(new FileReader (InFile))) {
