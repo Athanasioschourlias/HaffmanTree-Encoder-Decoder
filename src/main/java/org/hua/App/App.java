@@ -7,8 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class App{
-    public static void main(String[] args) throws IOException 
-    {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Frequencies r = new Frequencies("input.txt");
         Frequencies r2 = new Frequencies("input2.txt");
         Frequencies r3 = new Frequencies("input3.txt");
@@ -16,7 +15,7 @@ public class App{
         r.writeFile();
         r2.writeFile();
         r3.writeFile();
-
+        
         //calling the exit method at the end of the app to close the file.
         //TODO:DELETE THE FILE WE CREATED FOR THE FREQUENCIES
 //        Path path = Paths.get("./frequencies.dat");

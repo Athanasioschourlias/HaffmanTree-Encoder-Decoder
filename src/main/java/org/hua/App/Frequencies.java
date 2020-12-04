@@ -36,13 +36,13 @@ public class Frequencies
         this.InFile = new File(file);
         this.readFile = new BufferedReader(new FileReader (InFile));
 
-        //writeFile();
 
     }
 
     public void writeFile() throws IOException {
         /**
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
+         * The file name is hardcoded because of the exercise's explenation.
          */
         Path p = Paths.get("./frequencies.dat");
         try (OutputStream out = new BufferedOutputStream(
