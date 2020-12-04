@@ -129,15 +129,6 @@ public class Frequencies
 //            }
 //        }
 
-        //Printing what we stored from the file above to the STDOUT.
-//        for (int i = 0; i < 128; i++)
-//        {
-//
-//            System.out.printf("%c %d", i  , count[i]);
-//            System.out.println("");
-//
-//        }
-
 //        whichFile++;
 
         /**
@@ -153,6 +144,7 @@ public class Frequencies
         readFile.close();
 
     }
+
 
 
 }
