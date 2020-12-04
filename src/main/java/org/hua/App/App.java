@@ -13,7 +13,9 @@ public class App{
         Frequencies r2 = new Frequencies("input2.txt");
         Frequencies r3 = new Frequencies("input3.txt");
 
-
+        r.writeFile();
+        r2.writeFile();
+        r3.writeFile();
 
         //calling the exit method at the end of the app to close the file.
         //TODO:DELETE THE FILE WE CREATED FOR THE FREQUENCIES

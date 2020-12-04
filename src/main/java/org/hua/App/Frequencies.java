@@ -36,11 +36,11 @@ public class Frequencies
         this.InFile = new File(file);
         this.readFile = new BufferedReader(new FileReader (InFile));
 
-        writeFile();
+        //writeFile();
 
     }
 
-    private void writeFile() throws IOException {
+    public void writeFile() throws IOException {
         /**
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
          */
