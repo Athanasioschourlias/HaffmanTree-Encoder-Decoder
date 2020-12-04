@@ -8,6 +8,28 @@ public class App{
         Frequencies r2 = new Frequencies("input2.txt");
         Frequencies r3 = new Frequencies("input3.txt");
 
+
+        /**
+         *"DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * v
+         * v"DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * v
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         * "DEN EISAI FLOGERAS AN TO VLEPEIS"
+         *
+         */
+
+
+
+
+
         r.writeFile();
         r2.writeFile();
         r3.writeFile();
