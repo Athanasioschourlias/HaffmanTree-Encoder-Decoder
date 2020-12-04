@@ -4,6 +4,7 @@ package org.hua.App;
 import static java.nio.file.StandardOpenOption.*;
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -48,7 +49,7 @@ public class Frequencies
          */
         Path p = Paths.get("./frequencies.dat");
         try (OutputStream out = new BufferedOutputStream(
-                Files.newOutputStream(p, CREATE_NEW, APPEND)))
+                Files.newOutputStream(p, CREATE, APPEND)))
         {
             /**
              * WRITE – Opens the file for write access.
@@ -62,7 +63,12 @@ public class Frequencies
              * DSYNC – Keeps the file content synchronized with the underlying storage device.
              */
             ReadCounter();
+
+            String line = "\n";
+            byte[] nLine = line.getBytes();
+
             for (int i = 0; i < 128; i++)
+
             {
 
                 System.out.printf("%c %d", i  , count[i]);
@@ -70,13 +76,12 @@ public class Frequencies
 
                 String s = String.valueOf(count[i]);
                 byte[] d = s.getBytes();
-                String line = "\n";
-                byte[] nLine = line.getBytes();
                 out.write(d);
                 out.write(nLine);
 
 
             }
+            out.write(nLine);
 
         } catch (IOException x) {
 
@@ -105,7 +110,6 @@ public class Frequencies
     }
 
     private void ReadCounter() throws IOException {
-        System.out.println("These results are from file "+whichFile);
 
         /**
          * Preferred way from java documentation,Reading a File by Using Buffered Stream I/O.
@@ -157,7 +161,6 @@ public class Frequencies
 //        }
 
         whichFile++;
-
 
         /**
          * Releasing System Resources:

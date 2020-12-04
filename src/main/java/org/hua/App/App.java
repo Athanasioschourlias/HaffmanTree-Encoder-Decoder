@@ -17,7 +17,7 @@ public class App{
 
         
         //calling the exit method at the end of the app to close the file.
-
+        //TODO:DELETE THE FILE WE CREATED FOR THE FREQUENCIES
         
     }
 }
