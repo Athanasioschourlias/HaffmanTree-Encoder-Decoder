@@ -14,7 +14,7 @@ public class App{
 //        r.ReadCounter();
 //        r2.ReadCounter();
 //        r3.ReadCounter();
-        r.writeFile();
+
         
         //calling the exit method at the end of the app to close the file.
 

@@ -38,9 +38,11 @@ public class Frequencies
         this.InFile = new File(file);
         this.readFile = new BufferedReader(new FileReader (InFile));
 
+        writeFile();
+
     }
 
-    public void writeFile() throws IOException {
+    private void writeFile() throws IOException {
         /**
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
          */
@@ -81,6 +83,8 @@ public class Frequencies
             System.err.println(x);
 
         }
+
+        //An other method
 //        ReadCounter();
 //        File fout = new File("out.dat");
 //        FileOutputStream fos = new FileOutputStream(fout);
