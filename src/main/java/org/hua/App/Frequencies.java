@@ -82,7 +82,6 @@ public class Frequencies
             System.err.println(x);
 
         }
-        out.close();
 
 
     }
