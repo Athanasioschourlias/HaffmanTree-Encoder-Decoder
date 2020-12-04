@@ -13,13 +13,13 @@ public class Frequencies
     private char ch;
     private int nextChar;
     private final File InFile;
-//    private static int whichFile=1;
-    private final BufferedReader readFile;
-    private OutputStream out;
+    private static int fileCounter = 1;
 
     public Frequencies(String file) throws IOException
     {
 
+        this.ch = 0;
+        this.nextChar = 0;
         /**
          * By adding this bit of code we try to give the user a better understanding
          * of what went wrong.Alongside with the exeption the user will see a message
@@ -31,10 +31,7 @@ public class Frequencies
             System.out.println("Plese check if the given path is right or you have the right permissions to this file.");
             throw new FileNotFoundException();
         }
-
-        //Just initializing the file, no more actions needed from constructor
         this.InFile = new File(file);
-        this.readFile = new BufferedReader(new FileReader (InFile));
 
 
     }
@@ -45,6 +42,7 @@ public class Frequencies
          * The file name is hardcoded because of the exercise's explenation.
          */
         Path p = Paths.get("./frequencies.dat");
+
         try (OutputStream out = new BufferedOutputStream(
                 Files.newOutputStream(p, CREATE, APPEND)))
         {
@@ -82,7 +80,20 @@ public class Frequencies
             System.err.println(x);
 
         }
+        /**
+         * Releasing System Resources:
+         * Many of the resources that are used in this API, such as streams or channels,
+         * implement or extend the java.io.Closeable interface.
+         * A requirement of a Closeable resource is that the close method must be
+         * invoked to release the resource when no longer required.
+         * Neglecting to close a resource can have a negative implication on an
+         * application's performance. The try-with-resources statement,
+         * described in the next section, handles this step for you.
+         */
 
+
+        //cheking how many times we've written to the file.
+        fileCounter++;
 
     }
 
@@ -91,7 +102,7 @@ public class Frequencies
         /**
          * Preferred way from java documentation,Reading a File by Using Buffered Stream I/O.
          */
-        try (BufferedReader reader = readFile) {
+        try (BufferedReader reader = new BufferedReader(new FileReader (InFile))) {
             /**
              *  Reading each character in the file, with the read() function:
              *  The read() method of BufferedReader class in Java is used to read a single character
@@ -115,6 +126,16 @@ public class Frequencies
         } catch (IOException x) {
             System.err.format("IOException: %s%n", x);
         }
+        /**
+         * Releasing System Resources:
+         * Many of the resources that are used in this API, such as streams or channels,
+         * implement or extend the java.io.Closeable interface.
+         * A requirement of a Closeable resource is that the close method must be
+         * invoked to release the resource when no longer required.
+         * Neglecting to close a resource can have a negative implication on an
+         * application's performance. The try-with-resources statement,
+         * described in the next section, handles this step for you.
+         */
 
         //Backup way.
 //        int nextChar;
@@ -127,20 +148,6 @@ public class Frequencies
 //              count[ch]++;
 //            }
 //        }
-
-//        whichFile++;
-
-        /**
-         * Releasing System Resources:
-         * Many of the resources that are used in this API, such as streams or channels,
-         * implement or extend the java.io.Closeable interface.
-         * A requirement of a Closeable resource is that the close method must be
-         * invoked to release the resource when no longer required.
-         * Neglecting to close a resource can have a negative implication on an
-         * application's performance. The try-with-resources statement,
-         * described in the next section, handles this step for you.
-         */
-        readFile.close();
 
     }
 
