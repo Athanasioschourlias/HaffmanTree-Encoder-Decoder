@@ -3,7 +3,7 @@ package org.hua.App;
 import java.util.NoSuchElementException;
 
 class MinHeap<Node extends Comparable<Node>> {
-    public static final int DEFAULT_CAPACITY =64;
+    public static final int DEFAULT_CAPACITY =128;
     private Node[] array;
     private int size;
 

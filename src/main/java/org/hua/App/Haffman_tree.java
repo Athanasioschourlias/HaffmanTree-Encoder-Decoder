@@ -13,7 +13,7 @@ class Huffman_tree {
 
 
     //building the tree
-    private static Node Huffman(int[] freq){
+    public static Node Huffman(int[] freq){
         //using our priorityque(min heap)
         MinHeap<Node> minheap = new MinHeap<>();
         //creating the nodes without children
@@ -68,27 +68,12 @@ class Huffman_tree {
         }
     }
     //check every character in the file and return freqyency of every character
-    private static int[] FrequencyTable() throws FileNotFoundException, IOException {
-        File file1 = new File("input.txt");
-
-        BufferedReader readFirst = new BufferedReader(new FileReader(file1));
-
-        int nextChar;
-        char character;
-
+    public static int[] FrequencyTable(String data) throws FileNotFoundException, IOException {
         int[] freq = new int[ASCII_TABLE];
 
-        while ((nextChar = readFirst.read()) != -1) {
-
-            character = ((char) nextChar);
-            if (character > 0 && character <= 127) {
-                freq[character]++;
-            }
+        for(char character :data.toCharArray()){
+            freq[character]++;
         }
-
-        readFirst.close();
-
-
         return freq;
 
     }

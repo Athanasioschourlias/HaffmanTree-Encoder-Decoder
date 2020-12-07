@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.hua.App.Huffman_tree.Node;
 
 public class App{
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -63,6 +64,13 @@ public class App{
         } else {
             System.out.println("Failed to delete the file.");
         }
+        String test = "abccccccccccdeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefg";
+
+        Huffman_tree huffman = new Huffman_tree();
+        int[] ft = huffman.FrequencyTable(test);
+        Node n= huffman.Huffman(ft);
+        System.out.println(n);
+        
 
     }
 }
