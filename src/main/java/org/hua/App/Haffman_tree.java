@@ -92,18 +92,7 @@ class Huffman_tree {
         return freq;
 
     }
-
-    public static void main(String[] args) throws IOException {
-
-        for (int i = 0; i < ASCII_TABLE; i++) {
-            int[] ft =FrequencyTable();
-            Node n= Huffman(ft);
-            System.out.println(n);
-            System.out.println();
-
-        }
-
-    }
+    
 
 }
 
