@@ -5,7 +5,7 @@ University of Athens, Dept. of Informatics and Telematics.
 
 ## Usage
 
-To insall maven 
+To install maven 
 
 ```
 sudo apt-get install maven
