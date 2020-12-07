@@ -1,5 +1,24 @@
-Για το compilation του προγραμματος σε συστημα linux πρεπει 
-να εχεις εγκατεστημενη την maven , 
-αυτο γινεται με την εντολη sudo apt-get install maven, 
-για το compile χρησιμοποιούμε την εντολή mvm install 
-και για την εκτελεση της εφαρμογης την εντολη java -cp target/Assigment-1.0-SNAPSHOT.jar org.hua.App.App
+# Lab HashMap
+
+This code is part of an exercise for the Data Structures course at Harokopio
+University of Athens, Dept. of Informatics and Telematics.
+
+## Usage
+
+To install maven 
+
+```
+sudo apt-get install maven
+```
+
+Compile using 
+
+```
+mvn install
+```
+
+Run main using 
+
+```
+java -cp target/Assigment-1.0-SNAPSHOT.jar org.hua.App.App
+```
