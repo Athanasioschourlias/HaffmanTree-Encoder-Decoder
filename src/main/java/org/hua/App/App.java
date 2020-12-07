@@ -1,5 +1,7 @@
 package org.hua.App;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class App{
@@ -8,23 +10,11 @@ public class App{
         Frequencies r2 = new Frequencies("input2.txt");
         Frequencies r3 = new Frequencies("input3.txt");
 
+        for(int i = 0; i < 128; i++)
+        {
+            r.count[i]=r.count[i]+r2.count[i]+r3.count[i];
+        }
         r.writeFile();
-        r2.writeFile();
-        r3.writeFile();
-        
         //calling the exit method at the end of the app to close the file.
-        //TODO:DELETE THE FILE WE CREATED FOR THE FREQUENCIES
-//        Path path = Paths.get("./frequencies.dat");
-//        if(!Files.exists(path) && Files.isReadable(path)){
-//            System.out.println("Plese check if the given path is right or you have the right permissions to this file.");
-//            throw new FileNotFoundException();
-//        }
-//        File myObj = new File("frequencies.dat");
-//        if (myObj.delete()) {
-//            System.out.println("Deleted the file: " + myObj.getName());
-//        } else {
-//            System.out.println("Failed to delete the file.");
-//        }
-
     }
 }

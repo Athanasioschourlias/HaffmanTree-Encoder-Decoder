@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class Frequencies
 {
-    private final int[] count = new int[128];
+    public final long[] count = new long[128];
     private char ch;
     private int nextChar;
     private final File InFile;
@@ -31,8 +31,7 @@ public class Frequencies
             throw new FileNotFoundException();
         }
         this.InFile = new File(file);
-
-
+        ReadCounter();
     }
 
     public void writeFile() throws IOException {
@@ -43,7 +42,7 @@ public class Frequencies
         Path p = Paths.get("./frequencies.dat");
 
         try (OutputStream out = new BufferedOutputStream(
-                Files.newOutputStream(p, CREATE, APPEND)))
+                Files.newOutputStream(p, CREATE, TRUNCATE_EXISTING)))
         {
             /**
              * WRITE – Opens the file for write access.
@@ -56,17 +55,34 @@ public class Frequencies
              * SYNC – Keeps the file (both content and metadata) synchronized with the underlying storage device.
              * DSYNC – Keeps the file content synchronized with the underlying storage device.
              */
-            ReadCounter();
+            
 
             String line = "\n";
             byte[] nLine = line.getBytes();
-
+            long c=0;
+            for(int i = 0; i < 128; i++)
+            {
+                
+                c =c + count[i];
+                
+                
+                //System.out.println("ascii char " +(char)i+" with number " +i+ " is printed " +count[i] );
+                //System.out.println(c);
+                
+                //it count how many characters exist in this file 
+            }
+            
+            
             for (int i = 0; i < 128; i++)
 
             {
-
+                //double f = count[i]/c ;
                 String s = String.valueOf(count[i]);
                 byte[] d = s.getBytes();
+                String s1 = String.valueOf(i);
+                byte[] ascii = s1.getBytes();
+                out.write(ascii);
+                out.write(32);
                 out.write(d);
                 out.write(nLine);
 
@@ -147,7 +163,7 @@ public class Frequencies
 //              count[ch]++;
 //            }
 //        }
-
+    
     }
 
 
