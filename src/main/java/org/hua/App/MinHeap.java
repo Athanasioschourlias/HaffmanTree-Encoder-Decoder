@@ -1,123 +1,28 @@
 package org.hua.App;
 
-import java.util.NoSuchElementException;
+public interface MinHeap {
 
-class MinHeap<Node extends Comparable<Node>> {
-    public static final int DEFAULT_CAPACITY =128;
-    private Node[] array;
-    private int size;
+    /**
+     * For insserting an ellement to the heap
+     */
+    void insert();
 
+    /**
+     *
+     * @return root element, smallest element  in a Binary tree.
+     */
+    int getMin();
 
-    public MinHeap() {
-        this.size = 0;
-        this.array = (Node[]) new Comparable[DEFAULT_CAPACITY+1];
-    }
+    /**
+     * With this method we delete the smallest element of the tree(root, if the execution is with minHeap)
+     * @return the value of the element we deleted.If the deletion of the element fails we return -1.(In this case we know this will not effect
+     * us in the future because our algorithm only deals with possitive numbers.
+     */
+    int extractMin();
 
-    public MinHeap(Node[] array) {
-
-        int n = array.length;
-        this.array = (Node[]) new Comparable[n+1];
-        this.size = n;
-
-        for(int i=0;i<n;i++){
-            this.array[i+1]= array[i];
-        }
-        for(int i= this.array.length/2;i>0;i--){
-            fixdown(i);
-        }
-    }
-    //add element in array
-    public void insert(Node elem) {
-
-        if(size+1 >= array.length){
-            doubleCapacity();
-        }
-        array[++size] = elem;
-        fixup(size);
-    }
-
-    //returns the first element of the array which is also the minimum(root)
-    public Node findMin() {
-        if(isEmpty()){
-            throw new NoSuchElementException();
-
-        }
-        return array[1];
-    }
-    //extract the minimum element
-    public Node deleteMin() {
-        if(isEmpty()){
-            throw new NoSuchElementException();
-        }
-        Node result = array[1];
-
-        array[1]=array[size];
-        array[size]=null;
-        size--;
-        fixdown(1);
-
-        return result;
-    }
-    //checks if array is empty
-    public boolean isEmpty() {
-
-
-        return size == 0;
-    }
-
-    public int size() {
-
-        return size;
-    }
-
-    public void clear() {
-        for(int i=1; i<= size ; i++){
-            array[i]=null;
-        }
-        size =0;
-    }
-    private void swap(int i, int j){
-        Node tmp = array[i];
-        array[i]=array[j];
-        array[j]= tmp;
-    }
-    //starts with last element added and checks if its smaller than its parent
-    //if it is parent and child swap
-    private void fixup(int k){
-        assert k>=1 && k<= size;
-        while(k>1 && array[k].compareTo(array[k/2]) <0){
-            swap(k, k/2);
-            k = k/2;
-        }
-
-    }
-    //starts by checking if the element has children
-    //compares which children is smaller and then swaps with the smallest one
-    private void fixdown(int k){
-        while(2*k <= size){
-            int j = 2*k;
-            if(j+1 <size && array[j+1].compareTo(array[j])< 0){
-                j++;
-            }
-            if(array[k].compareTo(array[j])<= 0){
-                break;
-            }
-            swap(k,j);
-            k= j;
-        }
-    }
-    //creates new array with double the capacity of the last one
-    private void doubleCapacity(){
-        int newCapacity = (array.length-1)*2;
-        Node[] newArray = (Node[]) new Comparable[newCapacity+1];
-
-        for(int i=1;i<=size;i++){
-            newArray[i] = array[i];
-
-        }
-        array = newArray;
-    }
-
-
+    /**
+     * By starting from the midle of the table (i/2),rounded down. Which this will be the parent node of the ferthest right binary tree there is
+     * we execute a up-down short to this binary tree and subtract one from the parent node we found untill we are on the root element.
+     */
+    void Heapify();
 }
-
