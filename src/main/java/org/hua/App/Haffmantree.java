@@ -16,6 +16,7 @@ public class Haffmantree {
 
         }
 
+        //TODO: Check it again, it is a copy paste from other project.
         @Override
         public int compareTo(Node o) {
             int freqComp = Integer.compare(this.frequency, o.frequency);
