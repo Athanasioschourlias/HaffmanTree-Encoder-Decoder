@@ -5,20 +5,20 @@ public interface MinHeap<Node> {
     /**
      * For insserting an ellement to the heap
      */
-    void insert(Node elem);
+    void insert(Object elem);
 
     /**
      *
      * @return root element, smallest element  in a Binary tree.
      */
-    int getMin();
+    Node getMin();
 
     /**
      * With this method we delete the smallest element of the tree(root, if the execution is with minHeap)
      * @return the value of the element we deleted.If the deletion of the element fails we return -1.(In this case we know this will not effect
      * us in the future because our algorithm only deals with possitive numbers.
      */
-    int extractMin();
+    Node extractMin();
 
     /**
      * This method when it's called it goes through the table and puting a null value to every pointer to a node.
@@ -26,4 +26,10 @@ public interface MinHeap<Node> {
      */
     void clear();
 
+    /**
+     * This method checks if the array/tree is empty and returns the respective result to
+     * the user.
+     * @return true/false
+     */
+    boolean isEmpty();
 }

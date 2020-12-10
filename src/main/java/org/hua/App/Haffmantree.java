@@ -18,8 +18,13 @@ public class Haffmantree {
 
         @Override
         public int compareTo(Node o) {
-            return 0;
+            int freqComp = Integer.compare(this.frequency, o.frequency);
+            if(freqComp !=0){
+                return freqComp;
+            }
+            return Integer.compare(this.letter, o.letter);
         }
     }
+
 
 }

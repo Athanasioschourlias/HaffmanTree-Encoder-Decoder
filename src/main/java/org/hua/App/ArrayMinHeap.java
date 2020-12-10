@@ -1,5 +1,7 @@
 package org.hua.App;
 
+import java.util.NoSuchElementException;
+
 class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
 
     private final int CAP = 128;//Because we want to start from 1.
@@ -18,25 +20,57 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
     //adding an ellement to th array
     @Override
     public void insert(Object elem) {
-
-
-
-
+        /*
+         * We adding one to the size variable before we use it because we decided to
+         * start the table from the index one possition.
+         *
+         */
+        //TODO:POSSIBLE BUG with the casting.
+        HeapArray[++size] = (Node) elem;
+        fixup(size);
     }
 
     @Override
-    public int getMin() {
-        return 0;
+    public Node getMin() {
+        if(isEmpty()){
+            throw new NoSuchElementException();
+        }
+        return HeapArray[1];
     }
 
     @Override
-    public int extractMin() {
-        return 0;
+    public Node extractMin() {
+        if(isEmpty()){
+            throw new NoSuchElementException();
+        }
+        //Making a variable node to keep the node we will delete from the heap.
+        Node result = HeapArray[1];
+
+        HeapArray[1]=HeapArray[size];
+        HeapArray[size]=null;
+        size--;
+        fixup(1);
+        /*
+         * We call the fixdown method at the first element of the table because
+         * when we delete an element from a array min heap(only the first one can
+         * be deleted) we first swap the last element of the table with the first
+         * one and then we delete the min(first) element.
+         */
+        return result;
     }
 
     @Override
     public void clear() {
+        for(int i=1; i<= size ; i++){
+            HeapArray[i]=null;
+        }
+        size =0;
+        return;
+    }
 
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
     }
     /*
      Function to swap two nodes of the heap, the order doesnt matter but it is prefered to put the node with the smallest index at
@@ -50,13 +84,31 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
         HeapArray[spos] = tmp;
 
     }
-
-    private void fixup(int k) {
+    //starts with last element added and checks if its smaller than its parent
+    //if it is parent and child swap
+    private void fixup(int size) {
+        //TODO:Check size
+        //KEEP IN MIND: the size variable has nothing to do with the size variable
+        //of the class.
+        while (size > 1 && HeapArray[size].compareTo(HeapArray[size/2]) < 0){
+            swap(size,size/2);
+            size=size/2;
+        }
 
     }
 
-    private void fixdown(int k) {
-
+    private void fixdown(int size) {
+        while(2*size <= this.size){
+            int j = 2*size;
+            if(j+1 <size && HeapArray[j+1].compareTo(HeapArray[j])< 0){
+                j++;
+            }
+            if(HeapArray[size].compareTo(HeapArray[j])<= 0){
+                break;
+            }
+            swap(size,j);
+            size = j;
+        }
     }
 
     // Function to return the position of
