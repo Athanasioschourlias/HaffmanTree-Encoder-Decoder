@@ -5,9 +5,9 @@ University of Athens, Dept. of Informatics and Telematics.
 
 ## Team
 
-N.Liapis it21950    
-A.Chourlias it219113    
-C.Zalaxoris it21922
+N.Liapis <b>it21950</b>    
+A.Chourlias <b>it219113</b>  
+C.Zalaxoris <b>it21922</b>
 
 ## Usage
 
