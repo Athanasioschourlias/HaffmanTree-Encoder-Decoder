@@ -14,6 +14,7 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
         this.size = 0;
         this.HeapArray = (Node[]) new Comparable[CAP + 1];
 
+
     }
 
     //TODO:Check the interface.
