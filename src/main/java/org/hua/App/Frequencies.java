@@ -26,7 +26,8 @@ public class Frequencies
          * failed
          */
         Path path = Paths.get(file);
-        if(!Files.exists(path) && Files.isReadable(path)){
+        if(!Files.exists(path) && Files.isReadable(path))
+        {
             System.out.println("Plese check if the given path is right or you have the right permissions to this file.");
             throw new FileNotFoundException();
         }
@@ -34,15 +35,15 @@ public class Frequencies
         ReadCounter();
     }
 
-    public void writeFile() throws IOException {
+    public void writeFile() throws IOException 
+    {
         /*
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
          * The file name is hardcoded because of the exercise's explenation.
          */
         Path p = Paths.get("./frequencies.dat");
 
-        try (OutputStream out = new BufferedOutputStream(
-                Files.newOutputStream(p, CREATE, TRUNCATE_EXISTING)))
+        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(p, CREATE, TRUNCATE_EXISTING)))
         {
             /**
              * WRITE – Opens the file for write access.
@@ -62,21 +63,15 @@ public class Frequencies
             long c=0;
             for(int i = 0; i < 128; i++)
             {
+                //it count how many characters exist in this file 
                 
                 c =c + count[i];
                 
-                
-                //System.out.println("ascii char " +(char)i+" with number " +i+ " is printed " +count[i] );
-                //System.out.println(c);
-                
-                //it count how many characters exist in this file 
             }
             
             
             for (int i = 0; i < 128; i++)
-
             {
-                //double f = count[i]/c ;
                 String s = String.valueOf(count[i]);
                 byte[] d = s.getBytes();
                 String s1 = String.valueOf(i);
@@ -90,11 +85,11 @@ public class Frequencies
             }
             out.write(nLine);
 
-        } catch (IOException x) {
-
+        } catch (IOException x) 
+        {
             System.err.println(x);
-
         }
+
         /**
          * Releasing System Resources:
          * Many of the resources that are used in this API, such as streams or channels,
@@ -106,39 +101,42 @@ public class Frequencies
          * described in the next section, handles this step for you.
          */
 
-
         //cheking how many times we've written to the file.
         fileCounter++;
-
     }
 
-    private void ReadCounter() throws IOException {
+    private void ReadCounter() throws IOException 
+    {
 
         /*
          * Preferred way from java documentation,Reading a File by Using Buffered Stream I/O.
          */
-        try (BufferedReader reader = new BufferedReader(new FileReader (InFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader (InFile))) 
+        {
             /**
              *  Reading each character in the file, with the read() function:
              *  The read() method of BufferedReader class in Java is used to read a single character
              *  from the given buffered reader. This read() method reads one character at a
              *  time from the buffered stream and return it as an integer value.
              */
-            while ((nextChar = reader.read()) != -1) {
+            while ((nextChar = reader.read()) != -1) 
+            {
 
                 //increasing the counter of each character from the ASCII table
                 ch = ((char) nextChar);
 
-                if (ch > 0 && ch <= 127){
+                if (ch > 0 && ch <= 127)
+                {
 
-                    //count is a table of int's
+                    //count is a table of long's
                     count[ch]++;
 
                 }
 
             }
 
-        } catch (IOException x) {
+        } catch (IOException x) 
+        {
             System.err.format("IOException: %s%n", x);
         }
         /**
@@ -152,17 +150,6 @@ public class Frequencies
          * described in the next section, handles this step for you.
          */
 
-        //Backup way.
-//        int nextChar;
-//        while ((nextChar = readFile.read()) != -1)
-//        {
-//            //increasing the counter of each character from the ASCII table
-//            ch = ((char) nextChar);
-//            if (ch > 0 && ch <= 127)
-//            {
-//              count[ch]++;
-//            }
-//        }
     
     }
 

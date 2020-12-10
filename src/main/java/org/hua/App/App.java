@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class App{
-    public static void main(String[] args) throws IOException, InterruptedException {
+public class App
+{
+    public static void main(String[] args) throws IOException, InterruptedException 
+    {
         Frequencies r = new Frequencies("input.txt");
         Frequencies r2 = new Frequencies("input2.txt");
         Frequencies r3 = new Frequencies("input3.txt");
