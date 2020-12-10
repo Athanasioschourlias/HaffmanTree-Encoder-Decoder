@@ -16,5 +16,8 @@ public class App{
         }
         r.writeFile();
         //calling the exit method at the end of the app to close the file.
+
+        ArrayMinHeap h = new ArrayMinHeap();
     }
+
 }

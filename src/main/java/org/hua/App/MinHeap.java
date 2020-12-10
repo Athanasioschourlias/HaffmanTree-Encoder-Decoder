@@ -1,11 +1,11 @@
 package org.hua.App;
 
-public interface MinHeap {
+public interface MinHeap<Node> {
 
     /**
      * For insserting an ellement to the heap
      */
-    void insert();
+    void insert(Node elem);
 
     /**
      *
@@ -21,8 +21,9 @@ public interface MinHeap {
     int extractMin();
 
     /**
-     * By starting from the midle of the table (i/2),rounded down. Which this will be the parent node of the ferthest right binary tree there is
-     * we execute a up-down short to this binary tree and subtract one from the parent node we found untill we are on the root element.
+     * This method when it's called it goes through the table and puting a null value to every pointer to a node.
+     * with this method, we leave the job of "cleaning" the memmory.
      */
-    void Heapify();
+    void clear();
+
 }

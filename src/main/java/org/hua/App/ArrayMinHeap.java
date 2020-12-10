@@ -1,23 +1,26 @@
 package org.hua.App;
 
-import java.util.PriorityQueue;
+class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
 
-public class ArrayMinHeap implements MinHeap {
-
-    private final int CAP = 127;//Because we want to start from 1.
-    private int[] Heap = new int[CAP];
+    private final int CAP = 128;//Because we want to start from 1.
+    private Node[] HeapArray;
     private static final int root = 1;//the Heap[1] is the root of the binary tree.
     private int size;
 
 
     public ArrayMinHeap(){
         this.size = 0;
-//        Heap[0] = Integer.MIN_VALUE;
+        this.HeapArray = (Node[]) new Comparable[CAP + 1];
 
     }
 
+    //TODO:Check the interface.
+    //adding an ellement to th array
     @Override
-    public void insert() {
+    public void insert(Object elem) {
+
+
+
 
     }
 
@@ -32,20 +35,28 @@ public class ArrayMinHeap implements MinHeap {
     }
 
     @Override
-    public void Heapify() {
+    public void clear() {
 
     }
-
     /*
      Function to swap two nodes of the heap, the order doesnt matter but it is prefered to put the node with the smallest index at
      the first positional parameter and the node with the higher index at the second positional parameter.
      */
     private void swap(int fpos, int spos)
     {
-        int tmp;
-        tmp = Heap[fpos];
-        Heap[fpos] = Heap[spos];
-        Heap[spos] = tmp;
+        Node tmp;
+        tmp = HeapArray[fpos];
+        HeapArray[fpos] = HeapArray[spos];
+        HeapArray[spos] = tmp;
+
+    }
+
+    private void fixup(int k) {
+
+    }
+
+    private void fixdown(int k) {
+
     }
 
     // Function to return the position of
@@ -79,22 +90,6 @@ public class ArrayMinHeap implements MinHeap {
             return true;
         }
         return false;
-    }
-
-    //this is the class where we create the template for the nodes of the binnary tree.
-    private static class node<F extends Comparable<F>,L>{
-        public F frequency;
-        public L letter;//if the node is a leaf we store the letter of this node.
-        public node<F,L> left, right;
-
-        public node(F frequency, L letter){
-            this.frequency = frequency;
-            this.letter = letter;
-            this.left = null;
-            this.right = null;
-
-        }
-
     }
 
 }

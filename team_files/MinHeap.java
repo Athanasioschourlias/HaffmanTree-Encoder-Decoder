@@ -13,19 +13,6 @@ class MinHeap<Node extends Comparable<Node>> {
         this.array = (Node[]) new Comparable[DEFAULT_CAPACITY+1];
     }
 
-    public MinHeap(Node[] array) {
-
-        int n = array.length;
-        this.array = (Node[]) new Comparable[n+1];
-        this.size = n;
-
-        for(int i=0;i<n;i++){
-            this.array[i+1]= array[i];
-        }
-        for(int i= this.array.length/2;i>0;i--){
-            fixdown(i);
-        }
-    }
     //add element in array
     public void insert(Node elem) {
 
@@ -60,8 +47,6 @@ class MinHeap<Node extends Comparable<Node>> {
     }
     //checks if array is empty
     public boolean isEmpty() {
-
-
         return size == 0;
     }
 
@@ -106,17 +91,7 @@ class MinHeap<Node extends Comparable<Node>> {
             k= j;
         }
     }
-    //creates new array with double the capacity of the last one
-    private void doubleCapacity(){
-        int newCapacity = (array.length-1)*2;
-        Node[] newArray = (Node[]) new Comparable[newCapacity+1];
 
-        for(int i=1;i<=size;i++){
-            newArray[i] = array[i];
-
-        }
-        array = newArray;
-    }
 
 
 }
