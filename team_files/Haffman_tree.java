@@ -68,13 +68,26 @@ class Huffman_tree {
         }
     }
     //check every character in the file and return freqyency of every character
-    public static int[] FrequencyTable(String data) throws FileNotFoundException, IOException {
-        int[] freq = new int[ASCII_TABLE];
+    public static int[] FrequencyTable() {
+            int[] freq = new int[ASCII_TABLE];
+        BufferedReader br =null;
+        try {
 
-        for(char character :data.toCharArray()){
-            freq[character]++;
+            String sCurrentLine;
+            br = new BufferedReader(new FileReader("frequencies.dat"));
+
+            int i = 0;
+            while ((sCurrentLine = br.readLine()) != null) {
+                String[] arr = sCurrentLine.split(" ");
+                freq[i] = Integer.parseInt(arr[1]);
+                i++;
+            }
+            return freq;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
-        return freq;
 
     }
     
