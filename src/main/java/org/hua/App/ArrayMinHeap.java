@@ -2,7 +2,7 @@ package org.hua.App;
 
 import java.util.NoSuchElementException;
 
-class ArrayMinHeap<Node  extends Comparable<Node>> implements MinHeap {
+class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
 
     private final int CAP = 128;//Because we want to start from 1.
     private Node[] HeapArray;
