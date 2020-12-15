@@ -1,8 +1,10 @@
 package org.hua.App;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class App{
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -17,11 +19,13 @@ public class App{
         r.writeFile();
         //calling the exit method at the end of the app to close the file.
 
-        for(int i = 0;i < 128; i++){
-            System.out.printf("the character %c has a frequency of: %d\n",i,r.count[i]);
-        }
+//        for(int i = 0;i < 128; i++){
+//            System.out.printf("the character %c has a frequency of: %d\n",i,r.count[i]);
+//        }
 
-        ArrayMinHeap h = new ArrayMinHeap();
+        //ArrayMinHeap h = new ArrayMinHeap();
+
+
     }
 
 }

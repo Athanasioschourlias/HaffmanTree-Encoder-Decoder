@@ -1,8 +1,10 @@
 package org.hua.App;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Haffmantree {
 
@@ -35,7 +37,19 @@ public class Haffmantree {
         return root;
     }
 
-
+    private void ReadFrequencies()
+    {
+        File file = new File("Frequencies.dat");
+        Scanner scan = new Scanner("file");
+        int[]  ascii = new int[128];
+        long[] frq = new long[128];
+        for(int i=0;i<=127;i++)
+        {
+            ascii[i] = scan.nextInt();
+            frq[i] = scan.nextLong();
+            System.out.println("Ascii character "+ascii[i]+" found "+frq[i]+" times");
+        }
+    }
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
     public class Node implements Comparable<Node> {
