@@ -1,9 +1,6 @@
 package org.hua.App;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Haffmantree {
@@ -11,10 +8,9 @@ public class Haffmantree {
     private static int ASCII_TABLE = 128;
 
     //building the tree
-    public Node Haffman(){
+    public Node Haffman() throws FileNotFoundException {
         //using our priorityque(implimented with the minheap)
-        int[] frq = new int[128];
-        frq=ReadFrequencies();
+        int[] frq = ReadFrequencies();
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
         //creating the nodes without children
         for(char i=1;i<ASCII_TABLE;i++){
@@ -39,10 +35,9 @@ public class Haffmantree {
         return root;
     }
 
-    public int[] ReadFrequencies()
-    {
-        File file = new File("Frequencies.dat");
-        Scanner scan = new Scanner("file");
+    public int[] ReadFrequencies() throws FileNotFoundException {
+        File file = new File("frequencies.dat");
+        Scanner scan = new Scanner(file);
         int[]  ascii = new int[128];
         int[] frq = new int[128];
         for(int i=0;i<=127;i++)

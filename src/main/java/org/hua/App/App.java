@@ -20,9 +20,11 @@ public class App{
         //calling the exit method at the end of the app to close the file.
 
         Haffmantree h = new Haffmantree();
+        //h.Haffman();
+        //h.ReadFrequencies();
+        Haffmantree.Node n = h.Haffman();
 
-
-        //ArrayMinHeap h = new ArrayMinHeap();
+        //ArrayMinHeap A = new ArrayMinHeap();
 
 
     }
