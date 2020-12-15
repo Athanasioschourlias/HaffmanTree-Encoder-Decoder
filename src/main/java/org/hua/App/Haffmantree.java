@@ -37,7 +37,7 @@ public class Haffmantree {
         return root;
     }
 
-    private long[] ReadFrequencies()
+    public long[] ReadFrequencies()
     {
         File file = new File("Frequencies.dat");
         Scanner scan = new Scanner("file");
