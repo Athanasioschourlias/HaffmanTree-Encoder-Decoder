@@ -11,13 +11,15 @@ public class Haffmantree {
     private static int ASCII_TABLE = 128;
 
     //building the tree
-    public Node Haffman(int[] freq){
+    public Node Haffman(){
         //using our priorityque(implimented with the minheap)
+        int[] frq = new int[128];
+        frq=ReadFrequencies();
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
         //creating the nodes without children
         for(char i=1;i<ASCII_TABLE;i++){
 
-            minheap.insert(new Node(i,freq[i],null,null));
+            minheap.insert(new Node(i,frq[i],null,null));
 
         }
         //starting to add children from the min heap
@@ -37,16 +39,16 @@ public class Haffmantree {
         return root;
     }
 
-    public long[] ReadFrequencies()
+    public int[] ReadFrequencies()
     {
         File file = new File("Frequencies.dat");
         Scanner scan = new Scanner("file");
         int[]  ascii = new int[128];
-        long[] frq = new long[128];
+        int[] frq = new int[128];
         for(int i=0;i<=127;i++)
         {
             ascii[i] = scan.nextInt();
-            frq[i] = scan.nextLong();
+            frq[i] = scan.nextInt();
             //System.out.println("Ascii character "+ascii[i]+" found "+frq[i]+" times");
         }
         return frq;

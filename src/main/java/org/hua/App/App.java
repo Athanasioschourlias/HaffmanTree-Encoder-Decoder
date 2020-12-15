@@ -19,9 +19,8 @@ public class App{
         r.writeFile();
         //calling the exit method at the end of the app to close the file.
 
-//        for(int i = 0;i < 128; i++){
-//            System.out.printf("the character %c has a frequency of: %d\n",i,r.count[i]);
-//        }
+        Haffmantree h = new Haffmantree();
+
 
         //ArrayMinHeap h = new ArrayMinHeap();
 
