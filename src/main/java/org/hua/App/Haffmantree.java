@@ -56,12 +56,10 @@ public class Haffmantree {
         }
 
         @Override
-        public int compareTo(Node n) {
-            if (frequency < n.frequency) {
-                return -1;
-            }
-            else if(frequency > n.frequency) {
-                return 1;
+        public int compareTo(Node o) {
+            int frequencycomparison = Integer.compare(this.frequency, o.frequency);
+            if(frequencycomparison !=0){
+                return frequencycomparison;
             }
             return 0;
         }
