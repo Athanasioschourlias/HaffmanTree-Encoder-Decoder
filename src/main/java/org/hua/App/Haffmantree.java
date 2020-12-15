@@ -58,7 +58,7 @@ public class Haffmantree {
 
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
-    public class Node<Node extends Comparable<Node>> implements Comparable<Haffmantree.Node> {
+    public class Node<Node extends Comparable<Node>> implements Comparable<Node> {
         public int frequency;
         public int letter;//if the node is a leaf we store the letter of this node.
         public Node left, right;
@@ -75,6 +75,7 @@ public class Haffmantree {
             return this.left ==null && this.right==null;
         }
 
+        @Override
         public int compareTo(Node o) {
             return 0;
         }
