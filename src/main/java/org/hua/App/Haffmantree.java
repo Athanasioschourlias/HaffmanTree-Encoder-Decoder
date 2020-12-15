@@ -47,7 +47,7 @@ public class Haffmantree {
         {
             ascii[i] = scan.nextInt();
             frq[i] = scan.nextLong();
-            System.out.println("Ascii character "+ascii[i]+" found "+frq[i]+" times");
+            //System.out.println("Ascii character "+ascii[i]+" found "+frq[i]+" times");
         }
         return frq;
     }
