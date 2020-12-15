@@ -50,7 +50,7 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
         HeapArray[1]=HeapArray[size];
         HeapArray[size]=null;
         size--;
-        fixup(1);
+        fixdown(1);
         /*
          * We call the fixdown method at the first element of the table because
          * when we delete an element from a array min heap(only the first one can
@@ -67,6 +67,10 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
         }
         size =0;
         return;
+    }
+
+    public int getSize(){
+        return size;
     }
 
     @Override
@@ -91,24 +95,24 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
         //TODO:Check size
         //KEEP IN MIND: the size variable has nothing to do with the size variable
         //of the class.
-        while (size > 1 && HeapArray[size].compareTo(HeapArray[size/2]) < 0){
-            swap(size,size/2);
-            size=size/2;
+        while (size > 1 && HeapArray[size].compareTo(HeapArray[parent(size)]) < 0) {
+            swap(size, parent(size));
+            size = parent(size);
         }
 
     }
 
-    private void fixdown(int size) {
-        while(2*size <= this.size){
-            int j = 2*size;
-            if(j+1 <size && HeapArray[j+1].compareTo(HeapArray[j])< 0){
+    private void fixdown(int pos) {
+        while(leftChild(pos) <= this.size){
+            int j = leftChild(pos);
+            if(rightChild(pos) <pos && HeapArray[j+1].compareTo(HeapArray[j])< 0){
                 j++;
             }
-            if(HeapArray[size].compareTo(HeapArray[j])<= 0){
+            if(HeapArray[pos].compareTo(HeapArray[j])<= 0){
                 break;
             }
-            swap(size,j);
-            size = j;
+            swap(pos,j);
+            pos = j;
         }
     }
 

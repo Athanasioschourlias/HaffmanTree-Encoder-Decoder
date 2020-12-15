@@ -1,4 +1,6 @@
 package org.hua.App;
 
-public interface HaffmanTreeI {
+public interface HaffmanTreeI implements Comparable {
+
+
 }
