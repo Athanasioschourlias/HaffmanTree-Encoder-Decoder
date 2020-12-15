@@ -37,7 +37,7 @@ public class Haffmantree {
         return root;
     }
 
-    private void ReadFrequencies()
+    private long[] ReadFrequencies()
     {
         File file = new File("Frequencies.dat");
         Scanner scan = new Scanner("file");
@@ -49,6 +49,7 @@ public class Haffmantree {
             frq[i] = scan.nextLong();
             System.out.println("Ascii character "+ascii[i]+" found "+frq[i]+" times");
         }
+        return frq;
     }
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
