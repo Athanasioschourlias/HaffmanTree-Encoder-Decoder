@@ -3,12 +3,12 @@ package org.hua.App;
 import java.io.*;
 import java.util.Scanner;
 
-public class Haffmantree {
+public class Huffmantree {
 
     private static int ASCII_TABLE = 128;
 
     //building the tree
-    public Node Haffman() throws FileNotFoundException {
+    public Node Huffman() throws FileNotFoundException {
         //using our priorityque(implimented with the minheap)
         int[] frq = ReadFrequencies();
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
