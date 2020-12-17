@@ -1,9 +1,10 @@
 package org.hua.App;
+import java.io.Serializable;
 
 import java.io.*;
 import java.util.Scanner;
 
-public class Huffmantree {
+public class Huffmantree implements Serializable{
 
     private static final int ASCII_TABLE = 128;
 
