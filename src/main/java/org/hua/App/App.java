@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import org.hua.App.Huffmantree.Node;
 
 public class App{
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -22,7 +23,7 @@ public class App{
         Huffmantree h = new Huffmantree();
         //h.Haffman();
         //h.ReadFrequencies();
-        Huffmantree.Node n = h.Huffman();
+        Node n = h.Huffman();
 
         //ArrayMinHeap A = new ArrayMinHeap();
 

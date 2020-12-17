@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Huffmantree {
 
-    private static int ASCII_TABLE = 128;
+    private static final int ASCII_TABLE = 128;
 
     //building the tree
     public Node Huffman() throws FileNotFoundException {

@@ -66,7 +66,7 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
             HeapArray[i]=null;
         }
         size =0;
-        return;
+        
     }
 
     public int getSize(){
@@ -139,14 +139,6 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
         return (2 * pos) + 1;
     }
 
-    // Function that returns true if the passed
-    // node is a leaf node
-    private boolean isLeaf(int pos)
-    {
-        if (pos > (size / 2) && pos <= size) {
-            return true;
-        }
-        return false;
-    }
+    
 
 }
