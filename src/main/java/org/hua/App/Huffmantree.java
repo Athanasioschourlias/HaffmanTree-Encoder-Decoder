@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Huffmantree implements Serializable{
 
-    private static final int ASCII_TABLE = 128;
+    private final int ASCII_TABLE = 128;
 
     //building the tree
     public Node Huffman() throws FileNotFoundException {
