@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.io.*;
 import java.util.Scanner;
 
-public class Huffmantree implements Serializable{
+public class Huffmantree{
 
     private final int ASCII_TABLE = 128;
 

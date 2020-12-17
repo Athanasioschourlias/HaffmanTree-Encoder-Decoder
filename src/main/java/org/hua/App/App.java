@@ -1,13 +1,15 @@
 package org.hua.App;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
 public class App{
-    public static void main(String[] args) throws IOException, InterruptedException {
-        Frequencies r = new Frequencies("input.txt");
-        Frequencies r2 = new Frequencies("input2.txt");
-        Frequencies r3 = new Frequencies("input3.txt");
+    public static void main(String[] args) {
+
+        Frequencies r = makeFrequencies("input.txt");
+        Frequencies r2 = makeFrequencies("input2.txt");
+        Frequencies r3 = makeFrequencies("input3.txt");
 
         for(int i = 0; i < 128; i++)
         {
@@ -34,6 +36,16 @@ public class App{
         }
         */
         
+    }
+
+    public static Frequencies makeFrequencies(String filename){
+        Frequencies r = null;
+        try {
+            r = new Frequencies(filename);
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        }
+        return r;
     }
 
 }

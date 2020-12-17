@@ -14,8 +14,7 @@ public class Frequencies
     private final File InFile;
     private static int fileCounter = 1;
 
-    public Frequencies(String file) throws IOException
-    {
+    public Frequencies(String file) throws FileNotFoundException {
 
         this.ch = 0;
         this.nextChar = 0;
@@ -34,7 +33,7 @@ public class Frequencies
         ReadCounter();
     }
 
-    public void writeFile() throws IOException {
+    public void writeFile() {
         /*
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
          * The file name is hardcoded because of the exercise's explenation.
@@ -112,7 +111,7 @@ public class Frequencies
 
     }
 
-    private void ReadCounter() throws IOException {
+    private void ReadCounter() {
 
         /*
          * Preferred way from java documentation,Reading a File by Using Buffered Stream I/O.
