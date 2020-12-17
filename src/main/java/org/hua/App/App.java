@@ -19,10 +19,10 @@ public class App{
         r.writeFile();
         //calling the exit method at the end of the app to close the file.
 
-        Haffmantree h = new Haffmantree();
+        Huffmantree h = new Huffmantree();
         //h.Haffman();
         //h.ReadFrequencies();
-        Haffmantree.Node n = h.Haffman();
+        Huffmantree.Node n = h.Huffman();
 
         //ArrayMinHeap A = new ArrayMinHeap();
 

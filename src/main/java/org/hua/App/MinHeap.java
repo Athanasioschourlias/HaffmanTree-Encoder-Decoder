@@ -4,6 +4,7 @@ public interface MinHeap<Node> {
 
     /**
      * For inserting an element to the heap
+     * @param elem
      */
     void insert(Object elem);
 
