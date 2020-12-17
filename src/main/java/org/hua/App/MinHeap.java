@@ -3,7 +3,7 @@ package org.hua.App;
 public interface MinHeap<Node> {
 
     /**
-     * For insserting an ellement to the heap
+     * For inserting an element to the heap
      */
     void insert(Object elem);
 
