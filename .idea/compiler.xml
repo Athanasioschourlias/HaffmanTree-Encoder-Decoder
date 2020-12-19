@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Assigment" />
+        <module name="Haffman_tree_exercise" />
       </profile>
     </annotationProcessing>
   </component>

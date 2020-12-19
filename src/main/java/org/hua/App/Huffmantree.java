@@ -19,15 +19,17 @@ public class Huffmantree implements Serializable{
         String dataFile = "tree.dat";
         ObjectOutputStream out;
         try {
-            out = new ObjectOutputStream(new
-                    BufferedOutputStream(new FileOutputStream(dataFile)));
-            out.writeObject(root);
-
+            FileOutputStream fileOut = new FileOutputStream(dataFile);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            //out = new ObjectOutputStream(new
+            //        BufferedOutputStream(new FileOutputStream(dataFile)));
+            //out.writeObject(root);
+            objectOut.writeObject(root);
+            objectOut.close();
         } catch (IOException e){
             e.getMessage();
             e.printStackTrace();
         }
-
     }
 
     //RETURNING NODE FOR TESTING ONLYYYY//FIXME
@@ -36,6 +38,8 @@ public class Huffmantree implements Serializable{
         ObjectInputStream in;
         Node N=null;
         try {
+            //FileInputStream fileIn = new FileInputStream(dataFile);
+            //ObjectOutputStream objectIn = new ObjectOutputStream(fileIn);
             in = new ObjectInputStream(new
                     BufferedInputStream(new FileInputStream(dataFile)));
             try {
@@ -53,7 +57,7 @@ public class Huffmantree implements Serializable{
     }
 
     //building the tree
-    public Node Huffman() {
+    public Node Huffman()  {
         //using our priorityque(implimented with the minheap)
         int[] frq = ReadFrequencies(filename);
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
@@ -100,7 +104,7 @@ public class Huffmantree implements Serializable{
     }
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
-    public class Node implements Comparable<Node> , Serializable {
+    public class Node implements  Comparable<Node> , Serializable {
         public int frequency;
         public int letter;//if the node is a leaf we store the letter of this node.
         public Node left, right;
