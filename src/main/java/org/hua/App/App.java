@@ -23,8 +23,8 @@ public class App{
 
         //this is the root node of the tree, that we return from the Huffman() method.
         //FIXME: Junkie solution to see the tree in the debuger.
-        Huffmantree.Node node = h.Huffman();
-        h.storeTree(node);
+        Huffmantree.Node node;
+        h.storeTree( h.Huffman());
         //FIXME:h get tree den epistrefei to antikeimeno pisw MPOREI NA MHN TO GRAFEI EKSARXEIS
         node = h.GetTree();
 
