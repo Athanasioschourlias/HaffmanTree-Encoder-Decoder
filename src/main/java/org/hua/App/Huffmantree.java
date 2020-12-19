@@ -17,7 +17,7 @@ public class Huffmantree implements Serializable{
 
     public void storeTree(Node root){
         String dataFile = "tree.dat";
-        ObjectOutputStream out;
+        //ObjectOutputStream out;
         try {
             FileOutputStream fileOut = new FileOutputStream(dataFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);

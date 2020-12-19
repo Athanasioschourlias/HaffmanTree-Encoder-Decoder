@@ -16,7 +16,7 @@ public class App{
         r.writeFile();
 
         //calling the exit method at the end of the app to close the file.
-        String fileName = "tree.dat";
+        //String fileName = "tree.dat";
 
         //making a huffmanTree object
         Huffmantree h = new Huffmantree();
