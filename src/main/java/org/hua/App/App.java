@@ -1,8 +1,6 @@
 package org.hua.App;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
-
 
 public class App{
     public static void main(String[] args) {
@@ -19,8 +17,17 @@ public class App{
 
         //calling the exit method at the end of the app to close the file.
         String fileName = "tree.dat";
-        
+
+        //making a huffmanTree object
         Huffmantree h = new Huffmantree();
+
+        //this is the root node of the tree, that we return from the Huffman() method.
+        //FIXME: Junkie solution to see the tree in the debuger.
+        Huffmantree.Node node = h.Huffman();
+        h.storeTree(node);
+        //FIXME:h get tree den epistrefei to antikeimeno pisw MPOREI NA MHN TO GRAFEI EKSARXEIS
+        node = h.GetTree();
+
 
         //writing in file
         
@@ -38,6 +45,7 @@ public class App{
         
     }
 
+    //Handling expetions the method might throw due to the absence of the file.
     public static Frequencies makeFrequencies(String filename){
         Frequencies r = null;
         try {

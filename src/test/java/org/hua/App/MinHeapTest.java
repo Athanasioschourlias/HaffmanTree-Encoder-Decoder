@@ -1,8 +1,13 @@
 package org.hua.App;
 
+import org.junit.Test;
+
 public class MinHeapTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void testArrayMinHeap() {
+
+        //TODO:make a the test for the min heap
 
     }
 

@@ -1,17 +1,61 @@
 package org.hua.App;
-import java.io.Serializable;
 
 import java.io.*;
 import java.util.Scanner;
 
-public class Huffmantree{
+public class Huffmantree implements Serializable{
 
-    private final int ASCII_TABLE = 128;
+    private final String dataFile = "tree.dat";
+    private int ASCII_TABLE;
+    private String filename;
+    //No argument constractor
+    public Huffmantree(){
+        this.ASCII_TABLE=128;
+        //This is the standard file that we read the frequences from.
+        this.filename="frequencies.dat";
+    }
+
+    public void storeTree(Node root){
+        String dataFile = "tree.dat";
+        ObjectOutputStream out;
+        try {
+            out = new ObjectOutputStream(new
+                    BufferedOutputStream(new FileOutputStream(dataFile)));
+            out.writeObject(root);
+
+        } catch (IOException e){
+            e.getMessage();
+            e.printStackTrace();
+        }
+
+    }
+
+    //RETURNING NODE FOR TESTING ONLYYYY//FIXME
+    public Node GetTree(){
+        String dataFile = "tree.dat";
+        ObjectInputStream in;
+        Node N=null;
+        try {
+            in = new ObjectInputStream(new
+                    BufferedInputStream(new FileInputStream(dataFile)));
+            try {
+                N = (Node) in.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e){
+            e.getMessage();
+            e.printStackTrace();
+        }
+
+        return N;
+    }
 
     //building the tree
-    public Node Huffman() throws FileNotFoundException {
+    public Node Huffman() {
         //using our priorityque(implimented with the minheap)
-        int[] frq = ReadFrequencies();
+        int[] frq = ReadFrequencies(filename);
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
         //creating the nodes without children
         for(char i=1;i<ASCII_TABLE;i++){
@@ -36,9 +80,14 @@ public class Huffmantree{
         return root;
     }
 
-    public int[] ReadFrequencies() throws FileNotFoundException {
-        File file = new File("frequencies.dat");
-        Scanner scan = new Scanner(file);
+    public int[] ReadFrequencies(String filename) {
+        File file = new File(filename);
+        Scanner scan = null;
+        try {
+            scan = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         int[]  ascii = new int[128];
         int[] frq = new int[128];
         for(int i=0;i<=127;i++)
@@ -51,7 +100,7 @@ public class Huffmantree{
     }
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
-    public class Node implements Comparable<Node> {
+    public class Node implements Comparable<Node> , Serializable {
         public int frequency;
         public int letter;//if the node is a leaf we store the letter of this node.
         public Node left, right;
