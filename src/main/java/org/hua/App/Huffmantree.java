@@ -100,11 +100,6 @@ public class Huffmantree implements Serializable
             this.right = right;
 
         }
-        //checking if a node has children
-        boolean isLeaf()
-        {
-            return this.left ==null && this.right==null;
-        }
 
         @Override
         public int compareTo(Node o)

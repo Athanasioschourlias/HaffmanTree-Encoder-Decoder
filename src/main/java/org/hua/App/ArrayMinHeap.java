@@ -2,7 +2,7 @@ package org.hua.App;
 
 import java.util.NoSuchElementException;
 
-class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap
+class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap<Node>
 {
 
     private final int CAP = 128;//Because we want to start from 1.
@@ -19,13 +19,13 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap
 
     //adding an ellement to th array
     @Override
-    public void insert(Object elem)
+    public void insert(Node elem)
     {
         /*
          * We adding one to the size variable before we use it because we decided to
          * start the table from the index one possition.
          */
-        HeapArray[++size] = (Node) elem;
+        HeapArray[++size] = elem;
         fixup(size);
     }
 
