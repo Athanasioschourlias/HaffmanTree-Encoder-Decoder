@@ -1,6 +1,7 @@
 package org.hua.App;
 
-public interface HuffmanTreeI<Node> {
+public interface HuffmanTreeI<Node>
+{
 
     /**
      * creating the structure of the tree

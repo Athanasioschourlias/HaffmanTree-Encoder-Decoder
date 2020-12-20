@@ -3,7 +3,8 @@ package org.hua.App;
 import java.io.FileNotFoundException;
 
 public class App{
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         Frequencies r = makeFrequencies("input.txt");
         Frequencies r2 = makeFrequencies("input2.txt");
@@ -22,35 +23,21 @@ public class App{
         Huffmantree h = new Huffmantree();
 
         //this is the root node of the tree, that we return from the Huffman() method.
-        //FIXME: Junkie solution to see the tree in the debuger.
         Huffmantree.Node node = h.Huffman();
         h.storeTree(node);
-        //FIXME:h get tree den epistrefei to antikeimeno pisw MPOREI NA MHN TO GRAFEI EKSARXEIS
-        node = h.GetTree();
 
-
-        //writing in file
-        
-        /*Node n = h.Huffman();
-        try{
-            ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(fileName));
-            os.writeObject(n);
-            os.close();
-        } catch(FileNotFoundException e){
-            e.printStackTrace();
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        */
         
     }
 
     //Handling expetions the method might throw due to the absence of the file.
-    public static Frequencies makeFrequencies(String filename){
+    public static Frequencies makeFrequencies(String filename)
+    {
         Frequencies r = null;
-        try {
+        try
+        {
             r = new Frequencies(filename);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             e.getMessage();
         }
         return r;

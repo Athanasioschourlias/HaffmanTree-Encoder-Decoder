@@ -1,6 +1,7 @@
 package org.hua.App;
 
-public interface MinHeap<Node> {
+public interface MinHeap<Node>
+{
 
     /**
      * For inserting an element to the heap
