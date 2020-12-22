@@ -3,8 +3,7 @@ package org.hua.App;
 import org.junit.Test;
 
 import java.util.Random;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MinHeapTest {
 
@@ -12,23 +11,27 @@ public class MinHeapTest {
     public void testArrayMinHeap()
     {
 
-        Random rng = new Random(17);
+        Random rng = new Random(23);
 
         ArrayMinHeap<Node> h = new ArrayMinHeap<>();
-        Node currentMin = new Node(rng.nextInt());
+        Node currentMin = null;
+
         for (int i = 0; i < 128; i++)
         {
             Node node = new Node(rng.nextInt());
 
-            if ( node.value < currentMin.value )
+            if ( currentMin == null || node.value < currentMin.value )
             {
-                currentMin.value = node.value;
+                currentMin = node;
             }
-            h.insert(node);
-            assertEquals(h.getSize(), i + 1);
-            if (currentMin.compareTo(h.getMin()) == 0 ){
 
+            h.insert(node);
+
+            assertTrue(h.getSize() == i + 1);
+            if (currentMin.compareTo(h.getMin()) != 0 ){
+                throw new AssertionError();
             }
+
         }
 
         while (!h.isEmpty())
@@ -49,12 +52,20 @@ public class MinHeapTest {
 
         @Override
         public int compareTo(Node o) {
-            int frequencycomparison = Integer.compare(this.value, o.value);
-            if(frequencycomparison !=0)
-            {
-                return frequencycomparison;
+            //Advanced way to do tha same thing.
+//            int frequencycomparison = Integer.compare(this.value, o.value);
+//            if(frequencycomparison !=0)
+//            {
+//                return frequencycomparison;
+//            }
+//            return 0;
+            if(this.value == o.value){
+                return 0;
+            }else if(this.value > o.value ){
+                return 1;
+            }else {
+                return -1;
             }
-            return 0;
         }
     }
 

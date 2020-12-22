@@ -26,6 +26,7 @@ public class App{
         Huffmantree.Node node = h.Huffman();
         h.storeTree(node);
 
+
         
     }
 
