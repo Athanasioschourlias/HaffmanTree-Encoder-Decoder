@@ -1,12 +1,13 @@
 package org.hua.App;
 
-public interface MinHeap<Node> {
+public interface MinHeap<Node extends Comparable<Node>>
+{
 
     /**
      * For inserting an element to the heap
      * @param elem
      */
-    void insert(Object elem);
+    void insert(Node elem);
 
     /**
      *

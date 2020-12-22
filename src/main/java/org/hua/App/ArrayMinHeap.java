@@ -2,7 +2,8 @@ package org.hua.App;
 
 import java.util.NoSuchElementException;
 
-class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
+class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap<Node>
+{
 
     private final int CAP = 128;//Because we want to start from 1.
     private Node[] HeapArray;
@@ -10,38 +11,39 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
     private int size;
 
 
-    public ArrayMinHeap(){
+    public ArrayMinHeap()
+    {
         this.size = 0;
         this.HeapArray = (Node[]) new Comparable[CAP + 1];
-
-
     }
 
-    //TODO:Check the interface.
     //adding an ellement to th array
     @Override
-    public void insert(Object elem) {
+    public void insert(Node elem)
+    {
         /*
          * We adding one to the size variable before we use it because we decided to
          * start the table from the index one possition.
-         *
          */
-        //TODO:POSSIBLE BUG with the casting.
-        HeapArray[++size] = (Node) elem;
+        HeapArray[++size] = elem;
         fixup(size);
     }
 
     @Override
-    public Node getMin() {
-        if(isEmpty()){
+    public Node getMin()
+    {
+        if(isEmpty())
+        {
             throw new NoSuchElementException();
         }
         return HeapArray[1];
     }
 
     @Override
-    public Node extractMin() {
-        if(isEmpty()){
+    public Node extractMin()
+    {
+        if(isEmpty())
+        {
             throw new NoSuchElementException();
         }
         //Making a variable node to keep the node we will delete from the heap.
@@ -61,20 +63,24 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
     }
 
     @Override
-    public void clear() {
-        for(int i=1; i<= size ; i++){
+    public void clear()
+    {
+        for(int i=1; i<= size ; i++)
+        {
             HeapArray[i]=null;
         }
         size =0;
         
     }
 
-    public int getSize(){
+    public int getSize()
+    {
         return size;
     }
 
     @Override
-    public boolean isEmpty() {
+    public boolean isEmpty()
+    {
         return size == 0;
     }
     /*
@@ -91,24 +97,30 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap {
     }
     //starts with last element added and checks if its smaller than its parent
     //if it is parent and child swap
-    private void fixup(int size) {
-        //TODO:Check size
+    private void fixup(int size)
+    {
         //KEEP IN MIND: the size variable has nothing to do with the size variable
         //of the class.
-        while (size > 1 && HeapArray[size].compareTo(HeapArray[parent(size)]) < 0) {
+        while (size > 1 && HeapArray[size].compareTo(HeapArray[parent(size)]) < 0)
+        {
             swap(size, parent(size));
             size = parent(size);
         }
 
     }
 
-    private void fixdown(int pos) {
-        while(leftChild(pos) <= this.size){
+
+    private void fixdown(int pos)
+    {
+        while(leftChild(pos) <= this.size)
+        {
             int j = leftChild(pos);
-            if(rightChild(pos) <pos && HeapArray[j+1].compareTo(HeapArray[j])< 0){
+            if(rightChild(pos) <pos && HeapArray[j+1].compareTo(HeapArray[j])< 0)
+            {
                 j++;
             }
-            if(HeapArray[pos].compareTo(HeapArray[j])<= 0){
+            if(HeapArray[pos].compareTo(HeapArray[j])<= 0)
+            {
                 break;
             }
             swap(pos,j);

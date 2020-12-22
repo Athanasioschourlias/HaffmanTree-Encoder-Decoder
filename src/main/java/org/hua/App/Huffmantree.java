@@ -3,61 +3,39 @@ package org.hua.App;
 import java.io.*;
 import java.util.Scanner;
 
-public class Huffmantree implements Serializable{
+public class Huffmantree implements Serializable
+{
 
     private final String dataFile = "tree.dat";
     private int ASCII_TABLE;
     private String filename;
     //No argument constractor
-    public Huffmantree(){
+    public Huffmantree()
+    {
         this.ASCII_TABLE=128;
         //This is the standard file that we read the frequences from.
         this.filename="frequencies.dat";
     }
 
-    public void storeTree(Node root){
+    public void storeTree(Node root)
+    {
         String dataFile = "tree.dat";
-        ObjectOutputStream out;
         try {
             FileOutputStream fileOut = new FileOutputStream(dataFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            //out = new ObjectOutputStream(new
-            //        BufferedOutputStream(new FileOutputStream(dataFile)));
-            //out.writeObject(root);
             objectOut.writeObject(root);
             objectOut.close();
-        } catch (IOException e){
+        } catch (IOException e)
+        {
             e.getMessage();
             e.printStackTrace();
         }
     }
 
-    //RETURNING NODE FOR TESTING ONLYYYY//FIXME
-    public Node GetTree(){
-        String dataFile = "tree.dat";
-        ObjectInputStream in;
-        Node N=null;
-        try {
-            //FileInputStream fileIn = new FileInputStream(dataFile);
-            //ObjectOutputStream objectIn = new ObjectOutputStream(fileIn);
-            in = new ObjectInputStream(new
-                    BufferedInputStream(new FileInputStream(dataFile)));
-            try {
-                N = (Node) in.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-        } catch (IOException e){
-            e.getMessage();
-            e.printStackTrace();
-        }
-
-        return N;
-    }
 
     //building the tree
-    public Node Huffman()  {
+    public Node Huffman()
+    {
         //using our priorityque(implimented with the minheap)
         int[] frq = ReadFrequencies(filename);
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
@@ -70,7 +48,8 @@ public class Huffmantree implements Serializable{
         //starting to add children from the min heap
         //keep looping until we reach the root of the tree
         Node root = null;
-        while(minheap.getSize()>1){
+        while(minheap.getSize()>1)
+        {
             Node left = minheap.extractMin();
             Node right = minheap.extractMin();
             //adding the two frequencies we get and making the parent node
@@ -84,12 +63,15 @@ public class Huffmantree implements Serializable{
         return root;
     }
 
-    public int[] ReadFrequencies(String filename) {
+    public int[] ReadFrequencies(String filename)
+    {
         File file = new File(filename);
         Scanner scan = null;
-        try {
+        try
+        {
             scan = new Scanner(file);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
         int[]  ascii = new int[128];
@@ -104,27 +86,27 @@ public class Huffmantree implements Serializable{
     }
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
-    public class Node implements  Comparable<Node> , Serializable {
+    public class Node implements  Comparable<Node> , Serializable
+    {
         public int frequency;
         public int letter;//if the node is a leaf we store the letter of this node.
         public Node left, right;
 
-        public Node( int letter,int frequency,Node left, Node right){
+        public Node( int letter,int frequency,Node left, Node right)
+        {
             this.letter = letter;
             this.frequency = frequency;
             this.left = left;
             this.right = right;
 
         }
-        //checking if a node has children
-        boolean isLeaf(){
-            return this.left ==null && this.right==null;
-        }
 
         @Override
-        public int compareTo(Node o) {
+        public int compareTo(Node o)
+        {
             int frequencycomparison = Integer.compare(this.frequency, o.frequency);
-            if(frequencycomparison !=0){
+            if(frequencycomparison !=0)
+            {
                 return frequencycomparison;
             }
             return 0;
@@ -132,29 +114,5 @@ public class Huffmantree implements Serializable{
 
 
     }
-//
-//    public int[] FrequencyTable() {
-//        int[] freq = new int[ASCII_TABLE];
-//        BufferedReader br =null;
-//        try {
-//
-//            String sCurrentLine;
-//            br = new BufferedReader(new FileReader("frequencies.dat"));
-//
-//            int i = 0;
-//            while ((sCurrentLine = br.readLine()) != null) {
-//                String[] arr = sCurrentLine.split(" ");
-//                freq[i] = Integer.parseInt(arr[1]);
-//                i++;
-//            }
-//            return freq;
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//
-//    }
-
 
 }

@@ -14,7 +14,8 @@ public class Frequencies
     private final File InFile;
     private static int fileCounter = 1;
 
-    public Frequencies(String file) throws FileNotFoundException {
+    public Frequencies(String file) throws FileNotFoundException
+    {
 
         this.ch = 0;
         this.nextChar = 0;
@@ -25,7 +26,8 @@ public class Frequencies
          * failed
          */
         Path path = Paths.get(file);
-        if(!Files.exists(path) && Files.isReadable(path)){
+        if(!Files.exists(path) && Files.isReadable(path))
+        {
             System.out.println("Plese check if the given path is right or you have the right permissions to this file.");
             throw new FileNotFoundException();
         }
@@ -33,7 +35,8 @@ public class Frequencies
         ReadCounter();
     }
 
-    public void writeFile() {
+    public void writeFile()
+    {
         /*
          * Preferred way from java documentation,Creating and Writing a File by Using Stream I/O.
          * The file name is hardcoded because of the exercise's explenation.
@@ -89,7 +92,8 @@ public class Frequencies
             }
             out.write(nLine);
 
-        } catch (IOException x) {
+        } catch (IOException x)
+        {
 
             System.err.println(x);
 
@@ -111,19 +115,22 @@ public class Frequencies
 
     }
 
-    private void ReadCounter() {
+    private void ReadCounter()
+    {
 
         /*
          * Preferred way from java documentation,Reading a File by Using Buffered Stream I/O.
          */
-        try (BufferedReader reader = new BufferedReader(new FileReader (InFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader (InFile)))
+        {
             /**
              *  Reading each character in the file, with the read() function:
              *  The read() method of BufferedReader class in Java is used to read a single character
              *  from the given buffered reader. This read() method reads one character at a
              *  time from the buffered stream and return it as an integer value.
              */
-            while ((nextChar = reader.read()) != -1) {
+            while ((nextChar = reader.read()) != -1)
+            {
 
                 //increasing the counter of each character from the ASCII table
                 ch = ((char) nextChar);
@@ -137,7 +144,8 @@ public class Frequencies
 
             }
 
-        } catch (IOException x) {
+        } catch (IOException x)
+        {
             System.err.format("IOException: %s%n", x);
         }
         /**
@@ -150,18 +158,7 @@ public class Frequencies
          * application's performance. The try-with-resources statement,
          * described in the next section, handles this step for you.
          */
-
-        //Backup way.
-//        int nextChar;
-//        while ((nextChar = readFile.read()) != -1)
-//        {
-//            //increasing the counter of each character from the ASCII table
-//            ch = ((char) nextChar);
-//            if (ch > 0 && ch <= 127)
-//            {
-//              count[ch]++;
-//            }
-//        }
+        
 
     }
 
