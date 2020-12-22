@@ -15,5 +15,18 @@ public interface HuffmanTreeI<Node>
      */
     int[] ReadFrequencies();
 
+    /**
+     * This method takes the root node of the huffman tree that Huffamn() method created and stores the Huffman tree
+     * in a file tree.dat.
+     * @param root
+     */
+    void storeTree(Node root);
+
+    /**
+     * This method when its called it reads the huffman tree that was stored by the storeTree method in the tree.dat
+     * file.
+     * @return Node
+     */
+    Node getTree();
 
 }

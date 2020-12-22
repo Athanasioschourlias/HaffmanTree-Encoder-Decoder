@@ -1,6 +1,9 @@
 package org.hua.App;
 
 import java.io.FileNotFoundException;
+//importing the huffman tree node that we made in the huffmantree class in order to store somewhere the nodes we returning
+//from the deferent classes that we use, and not importing it localy all the time.
+import org.hua.App.Huffmantree.Node;
 
 public class App{
     public static void main(String[] args)
@@ -23,10 +26,12 @@ public class App{
         Huffmantree h = new Huffmantree();
 
         //this is the root node of the tree, that we return from the Huffman() method.
-        Huffmantree.Node node = h.Huffman();
+        Node node = h.Huffman();
         h.storeTree(node);
 
-
+        //After we store the tree with the help of the storeTree method of Huffmantree class we read the tree and store
+        //its root in a node object witht the help of the GetTree class.
+        node = h.GetTree();
         
     }
 

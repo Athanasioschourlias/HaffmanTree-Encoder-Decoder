@@ -9,6 +9,7 @@ public class Huffmantree implements Serializable
     private final String dataFile = "tree.dat";
     private int ASCII_TABLE;
     private String filename;
+
     //No argument constractor
     public Huffmantree()
     {
@@ -27,7 +28,6 @@ public class Huffmantree implements Serializable
             objectOut.close();
         } catch (IOException e)
         {
-            e.getMessage();
             e.printStackTrace();
         }
     }
@@ -133,8 +133,6 @@ public class Huffmantree implements Serializable
             }
             return 0;
         }
-
-
     }
 
 }
