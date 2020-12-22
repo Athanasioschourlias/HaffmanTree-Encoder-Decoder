@@ -32,6 +32,28 @@ public class Huffmantree implements Serializable
         }
     }
 
+    //RETURNING THE ROOT NODE OF THE HUFFMAN TREE.
+    public Node GetTree(){
+        String dataFile = "tree.dat";
+        ObjectInputStream in;
+        Node N=null;
+        try {
+            in = new ObjectInputStream(new
+                    BufferedInputStream(new FileInputStream(dataFile)));
+            try {
+                N = (Node) in.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        return N;
+    }
+
+
 
     //building the tree
     public Node Huffman()
