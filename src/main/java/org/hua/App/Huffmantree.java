@@ -27,6 +27,7 @@ public class Huffmantree implements Serializable
      * @return HashMap
      */
     public HashMap buildEncodingMap(Node root) {
+        //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
         return null;
     }
 
