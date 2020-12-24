@@ -1,6 +1,7 @@
 package org.hua.App;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Huffmantree implements Serializable
@@ -18,8 +19,23 @@ public class Huffmantree implements Serializable
         this.filename="frequencies.dat";
     }
 
-    public void storeTree(Node root)
-    {
+    /**
+     * This method takes as argument a node which represends the root of the huffman tree and returns a HashMap that
+     * has as keys the integer values of the ASCII letters and as value's the huffman encoded value for the particular
+     * letter the value has as key/value pair.
+     * @param root
+     * @return HashMap
+     */
+    public HashMap buildEncodingMap(Node root) {
+        return null;
+    }
+
+    /**
+     * This method takes the root node of the huffman tree that Huffamn() method created and stores the Huffman tree
+     * in a file tree.dat.
+     * @param root
+     */
+    public void storeTree(Node root) {
         String dataFile = "tree.dat";
         try {
             FileOutputStream fileOut = new FileOutputStream(dataFile);
@@ -32,8 +48,13 @@ public class Huffmantree implements Serializable
         }
     }
 
-    //RETURNING THE ROOT NODE OF THE HUFFMAN TREE.
-    public Node GetTree(){
+
+    /**
+     * This method when its called it reads the huffman tree that was stored by the storeTree method in the tree.dat
+     * file.
+     * @return Node, root of the huffman tree we stored.
+     */
+    public Node getTree(){
         String dataFile = "tree.dat";
         ObjectInputStream in;
         Node N=null;
@@ -53,8 +74,10 @@ public class Huffmantree implements Serializable
         return N;
     }
 
-
-
+    /**
+     * creating the structure of the tree
+     * @return Node
+     */
     //building the tree
     public Node Huffman()
     {
@@ -85,6 +108,10 @@ public class Huffmantree implements Serializable
         return root;
     }
 
+    /**
+     * reads fequencies from our file in an array so they can be inserted in the min heap
+     * @return int table
+     */
     public int[] ReadFrequencies(String filename)
     {
         File file = new File(filename);
@@ -106,9 +133,10 @@ public class Huffmantree implements Serializable
         }
         return frq;
     }
+
     //this is the class where we create the template for the nodes of the binnary tree.
     //root of the tree
-    public class Node implements  Comparable<Node> , Serializable
+    public static class Node implements  Comparable<Node> , Serializable
     {
         public int frequency;
         public int letter;//if the node is a leaf we store the letter of this node.
