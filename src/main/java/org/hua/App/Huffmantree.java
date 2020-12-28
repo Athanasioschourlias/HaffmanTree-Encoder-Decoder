@@ -28,7 +28,22 @@ public class Huffmantree implements Serializable
      */
     public HashMap buildEncodingMap(Node root) {
         //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
-        return null;
+        HashMap<Integer, String> table = new HashMap<>();
+        LookupTableImpl(root,"", table);
+        return table;
+    }
+    
+    public void LookupTableImpl(Node node, String string, HashMap<Integer, String> table) {
+        //if a node has children
+        if(!node.isLeaf()){
+            //go on the left child and append a 0
+            LookupTableImpl(node.left, string +'0',table);
+            //go on the right child and append a 1
+            LookupTableImpl(node.right, string + '1',table);
+        }else{
+            //if node doesnt have children then put the whole string that was created to our hashmap
+            table.put(node.letter, string);
+        }
     }
 
     /**
@@ -151,7 +166,9 @@ public class Huffmantree implements Serializable
             this.right = right;
 
         }
-
+        boolean isLeaf(){
+            return this.left == null && this.right == null;
+        }
         @Override
         public int compareTo(Node o)
         {
