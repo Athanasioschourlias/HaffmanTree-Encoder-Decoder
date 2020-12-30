@@ -67,7 +67,6 @@ public class Frequencies
 
                 c =c + count[i];
 
-
                 //System.out.println("ascii char " +(char)i+" with number " +i+ " is printed " +count[i] );
                 //System.out.println(c);
 
@@ -129,20 +128,20 @@ public class Frequencies
              *  from the given buffered reader. This read() method reads one character at a
              *  time from the buffered stream and return it as an integer value.
              */
-            while ((nextChar = reader.read()) != -1)
+            do
             {
+                nextChar = reader.read();
 
                 //increasing the counter of each character from the ASCII table
-                ch = ((char) nextChar);
 
-                if (ch > 0 && ch <= 127){
+                if (nextChar > 0 && nextChar <= 127){
 
                     //count is a table of int's
-                    count[ch]++;
+                    count[nextChar]++;
 
                 }
 
-            }
+            }while (nextChar != -1);
 
         } catch (IOException x)
         {
