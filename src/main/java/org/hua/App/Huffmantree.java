@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Huffmantree implements Serializable
 {
 
+    private LinkedQueue<String> list = new LinkedQueue<>();
     private final String dataFile = "tree.dat";
     private int ASCII_TABLE;
     private String filename;
@@ -29,20 +30,23 @@ public class Huffmantree implements Serializable
     public HashMap buildEncodingMap(Node root) {
         //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
         HashMap<Integer, String> table = new HashMap<>();
-        LookupTableImpl(root,"", table);
+        LookupTableImpl(root , null);
         return table;
     }
     
-    public void LookupTableImpl(Node node, String string, HashMap<Integer, String> table) {
-        //if a node has children
-        if(!node.isLeaf()){
+    public void LookupTableImpl(Node root, String path) {
+        list.push(path);
+        //if a root has children
+        if(!root.isLeaf()){
+
             //go on the left child and append a 0
-            LookupTableImpl(node.left, string +'0',table);
+            LookupTableImpl(root.left, "0");
+
             //go on the right child and append a 1
-            LookupTableImpl(node.right, string + '1',table);
+            LookupTableImpl(root.right, "1");
         }else{
-            //if node doesnt have children then put the whole string that was created to our hashmap
-            table.put(node.letter, string);
+            //if root doesnt have children then put the whole string that was created to our hashmap
+
         }
     }
 

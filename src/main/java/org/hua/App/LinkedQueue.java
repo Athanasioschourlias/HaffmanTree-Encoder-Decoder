@@ -88,10 +88,10 @@ public class LinkedQueue<E> implements Queue<E>  {
 	@Override
 	public Iterator<E> iterator() {
 		//with the keyword this we "give" the iterator the specific list we are right now to iterate.
-		return new QueueIterator<>(this);
+		return new QueueIterator(this);
 	}
 
-	private class  QueueIterator<E> implements Iterator<E>{
+	private class  QueueIterator implements Iterator<E>{
 
 		//TODO: FINISH MEE
 		Node<E> current;
