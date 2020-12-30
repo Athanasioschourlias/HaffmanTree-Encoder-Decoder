@@ -45,6 +45,11 @@ public class LinkedQueue<E> implements Queue<E>  {
 
 		Node<E> n = new Node<>();
 		n=head;
+		if(head.next==null)
+		{
+			head.data=null;
+			return head.data;
+		}
 		while (n.next!=null)
 		{
 			if( n.next==tail )
