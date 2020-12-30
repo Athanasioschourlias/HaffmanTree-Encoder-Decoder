@@ -1,13 +1,15 @@
 package org.hua.App;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Huffmantree implements Serializable
 {
-
+    private String string = "";
     private LinkedQueue<String> list = new LinkedQueue<>();
+    private ArrayList<String> l = new ArrayList<>();
     private final String dataFile = "tree.dat";
     private int ASCII_TABLE;
     private String filename;
@@ -27,28 +29,57 @@ public class Huffmantree implements Serializable
      * @param root
      * @return HashMap
      */
+
     public HashMap buildEncodingMap(Node root) {
         //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
         HashMap<Integer, String> table = new HashMap<>();
-        LookupTableImpl(root , null);
+        LookupTableImpl(root ,list);
         return table;
     }
-    
-    public void LookupTableImpl(Node root, String path) {
-        list.push(path);
-        //if a root has children
-        if(!root.isLeaf()){
 
-            //go on the left child and append a 0
-            LookupTableImpl(root.left, "0");
-
-            //go on the right child and append a 1
-            LookupTableImpl(root.right, "1");
-        }else{
-            //if root doesnt have children then put the whole string that was created to our hashmap
-
+    public void LookupTableImpl(Node cur , LinkedQueue<String> list)
+    {
+        if(!cur.isLeaf())
+        {
+            list.push("0");
+            LookupTableImpl(cur.left,list);
+            list.pop();
+            list.push("1");
+            LookupTableImpl(cur.right,list);
+            list.pop();
+        }else
+        {
+            for (String s : list)
+            {
+                if(s!=null) {
+                    string = string + s ;
+                }
+            }
+            System.out.print(cur.letter+"->");
+            System.out.println(string);
+            //l.clear();
+            string="";
         }
     }
+//    public HashMap buildEncodingMap(Node root) {
+//        //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
+//        HashMap<Integer, String> table = new HashMap<>();
+//        LookupTableImpl(root,"", table);
+//        return table;
+//    }
+//
+//    public void LookupTableImpl(Node node, String string, HashMap<Integer, String> table) {
+//        //if a node has children
+//        if(!node.isLeaf()){
+//            //go on the left child and append a 0
+//            LookupTableImpl(node.left, string +'0',table);
+//            //go on the right child and append a 1
+//            LookupTableImpl(node.right, string + '1',table);
+//        }else{
+//            //if node doesnt have children then put the whole string that was created to our hashmap
+//            table.put(node.letter, string);
+//        }
+//    }
 
     /**
      * This method takes the root node of the huffman tree that Huffamn() method created and stores the Huffman tree

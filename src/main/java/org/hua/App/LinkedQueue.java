@@ -43,13 +43,21 @@ public class LinkedQueue<E> implements Queue<E>  {
 			throw new NoSuchElementException();
 		}
 
-		E result = head.data;
-		head = head.next;
-		if(head == null){
-			tail = null;
+		Node<E> n = new Node<>();
+		n=head;
+		while (n.next!=null)
+		{
+			if( n.next==tail )
+			{
+				n.next=null;
+			}else
+			{
+				n=n.next;
+			}
 		}
-		size--;
-		return result;
+		tail=n;
+		return tail.data;
+
 	}
 
 	@Override
