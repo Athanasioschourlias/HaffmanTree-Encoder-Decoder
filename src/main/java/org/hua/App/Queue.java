@@ -4,12 +4,9 @@
  */
 package org.hua.App;
 
-/**
- * A FIFO queue
- *
- * @param <E> the element type
- */
-public interface Queue<E> {
+import java.util.Iterator;
+
+public interface Queue<E> extends Iterable<E> {
 
 	/**
 	 * Push a new element into the queue
@@ -49,6 +46,12 @@ public interface Queue<E> {
 	 */
 	void clear();
 
-
+	/**
+	 * Get a key iterator.
+	 *
+	 * @return a key iterator
+	 */
+	@Override
+	Iterator<E> iterator();
 	
 }

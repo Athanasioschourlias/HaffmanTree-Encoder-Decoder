@@ -1,8 +1,9 @@
 package org.hua.App;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedQueue<E> implements Queue<E> {
+public class LinkedQueue<E> implements Queue<E>  {
 
 	private Node<E> head,tail;
 	private int size;
@@ -60,6 +61,11 @@ public class LinkedQueue<E> implements Queue<E> {
 		return head.data;
 	}
 
+	public Node<E> getHead()
+	{
+		return head;
+	}
+
 	@Override
 	public boolean isEmpty() {
 		return size == 0;
@@ -78,6 +84,36 @@ public class LinkedQueue<E> implements Queue<E> {
 		return;
 	}
 
-	
+
+	@Override
+	public Iterator<E> iterator() {
+		//with the keyword this we "give" the iterator the specific list we are right now to iterate.
+		return new QueueIterator<>(this);
+	}
+
+	private class  QueueIterator<E> implements Iterator<E>{
+
+		//TODO: FINISH MEE
+		Node<E> current;
+
+		// initialize pointer to head of the list for iteration
+		public QueueIterator(LinkedQueue<E> Queue)
+		{
+			current = Queue.getHead();
+		}
+
+		// returns false if next element does not exist
+		@Override
+		public boolean hasNext() {
+			return current != null;
+		}
+
+		@Override
+		public E next() {
+			E data = current.data;
+			current = current.next;
+			return data;
+		}
+	}
 	
 }
