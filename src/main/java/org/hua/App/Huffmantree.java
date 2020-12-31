@@ -1,9 +1,15 @@
 package org.hua.App;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
 public class Huffmantree implements Serializable
 {
@@ -38,7 +44,36 @@ public class Huffmantree implements Serializable
         return codingmap;
     }
 
-    public void storeEncodingMap(HashMap<Integer, String> cdmap){
+    public void storeEncodingMap(HashMap<Integer, String> cdmap) {
+
+        BufferedWriter outputStream = null;
+
+
+        try {
+            outputStream = new BufferedWriter(new FileWriter("codes.dat"));
+
+            for (int i = 1; i < 128; i++) {
+
+                String s = String.valueOf(i);
+                outputStream.write(s);
+                outputStream.write("->");
+                outputStream.write(cdmap.get(i));
+                outputStream.write("\n");
+
+            }
+        } catch (IOException e){
+
+            e.printStackTrace();
+
+        }finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
     }
 
@@ -63,6 +98,7 @@ public class Huffmantree implements Serializable
             //FIXME: for the tests REMOVE AT FINAL PRODUCT.
             System.out.print(cur.letter+"->");
             System.out.println(string);
+            //FIXME
             codingmap.put(cur.letter , string);
             string="";
 
