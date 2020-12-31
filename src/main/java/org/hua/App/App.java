@@ -35,7 +35,6 @@ public class App{
         //its root in a node object witht the help of the GetTree class.
         node = h.getTree();
         h.storeEncodingMap(h.buildEncodingMap(node));
-        //System.out.println(node);
 
 
 
