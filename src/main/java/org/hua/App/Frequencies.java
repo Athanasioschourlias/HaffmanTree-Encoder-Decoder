@@ -134,7 +134,7 @@ public class Frequencies
 
                 //increasing the counter of each character from the ASCII table
 
-                if (nextChar > 0 && nextChar <= 127){
+                if (nextChar >= 0 && nextChar <= 127){
 
                     //count is a table of int's
                     count[nextChar]++;

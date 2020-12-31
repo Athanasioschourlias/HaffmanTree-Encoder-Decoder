@@ -34,7 +34,8 @@ public class App{
         //After we store the tree with the help of the storeTree method of Huffmantree class we read the tree and store
         //its root in a node object witht the help of the GetTree class.
         node = h.getTree();
-        HashMap<Integer, String> lookup = h.buildEncodingMap(node);
+        h.storeEncodingMap(h.buildEncodingMap(node));
+
         //System.out.println(node);
 
 

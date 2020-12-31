@@ -16,7 +16,7 @@ public class LinkedQueue<E> implements Queue<E>  {
 
 
 	private static class Node<E>{
-		public  E data;
+		public E data;
 		public Node<E> next;
 	}
 
@@ -43,8 +43,7 @@ public class LinkedQueue<E> implements Queue<E>  {
 			throw new NoSuchElementException();
 		}
 
-		Node<E> n = new Node<>();
-		n=head;
+		Node<E> n=head;
 		if(head.next==null)
 		{
 			head.data=null;
@@ -52,7 +51,7 @@ public class LinkedQueue<E> implements Queue<E>  {
 		}
 		while (n.next!=null)
 		{
-			if( n.next==tail )
+			if( n.next == tail )
 			{
 				n.next=null;
 			}else

@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Huffmantree implements Serializable
 {
     private String string = "";
+    private HashMap<Integer, String> codingmap = new HashMap<>();
     private LinkedQueue<String> list = new LinkedQueue<>();
     private ArrayList<String> l = new ArrayList<>();
     private final String dataFile = "tree.dat";
@@ -31,10 +32,14 @@ public class Huffmantree implements Serializable
      */
 
     public HashMap buildEncodingMap(Node root) {
-        //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
-        HashMap<Integer, String> table = new HashMap<>();
+        //building the paths to each letter and storing every letter and it's path at a hashmap.
         LookupTableImpl(root ,list);
-        return table;
+
+        return codingmap;
+    }
+
+    public void storeEncodingMap(HashMap<Integer, String> cdmap){
+
     }
 
     public void LookupTableImpl(Node cur , LinkedQueue<String> list)
@@ -55,14 +60,16 @@ public class Huffmantree implements Serializable
                     string = string + s ;
                 }
             }
+            //FIXME: for the tests REMOVE AT FINAL PRODUCT.
             System.out.print(cur.letter+"->");
             System.out.println(string);
-            //l.clear();
+            codingmap.put(cur.letter , string);
             string="";
+
         }
     }
+
 //    public HashMap buildEncodingMap(Node root) {
-//        //TODO: MAKE AN ARRAY STUCK, IMPLEMENT A TREE SEARCH, STORE THE LEETERS AND THE PATH FROM THE HUFFMAN TREE TO THE LETTER(LEAF) AT A HASH MAP
 //        HashMap<Integer, String> table = new HashMap<>();
 //        LookupTableImpl(root,"", table);
 //        return table;
