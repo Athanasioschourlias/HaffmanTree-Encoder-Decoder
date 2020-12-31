@@ -1,8 +1,6 @@
 package org.hua.App;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayDeque;
-import java.util.HashMap;
 //importing the huffman tree node that we made in the huffmantree class in order to store somewhere the nodes we returning
 //from the deferent classes that we use, and not importing it localy all the time.
 import org.hua.App.Huffmantree.Node;
