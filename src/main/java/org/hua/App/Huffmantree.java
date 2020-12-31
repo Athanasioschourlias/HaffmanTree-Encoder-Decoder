@@ -95,10 +95,6 @@ public class Huffmantree implements Serializable
                     string = string + s ;
                 }
             }
-            //FIXME: for the tests REMOVE AT FINAL PRODUCT.
-            System.out.print(cur.letter+"->");
-            System.out.println(string);
-            //FIXME
             codingmap.put(cur.letter , string);
             string="";
 

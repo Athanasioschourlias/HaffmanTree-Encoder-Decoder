@@ -105,7 +105,6 @@ public class LinkedQueue<E> implements Queue<E>  {
 
 	private class  QueueIterator implements Iterator<E>{
 
-		//TODO: FINISH MEE
 		Node<E> current;
 
 		// initialize pointer to head of the list for iteration
