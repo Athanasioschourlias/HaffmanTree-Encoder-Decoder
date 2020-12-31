@@ -17,7 +17,6 @@ public class Huffmantree implements Serializable
     private HashMap<Integer, String> codingmap = new HashMap<>();
     private LinkedQueue<String> list = new LinkedQueue<>();
     private ArrayList<String> l = new ArrayList<>();
-    private final String dataFile = "tree.dat";
     private int ASCII_TABLE;
     private String filename;
 
