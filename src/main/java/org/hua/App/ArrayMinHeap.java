@@ -151,6 +151,4 @@ class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap<Node>
         return (2 * pos) + 1;
     }
 
-    
-
 }

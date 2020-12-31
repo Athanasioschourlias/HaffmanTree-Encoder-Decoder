@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 //from the deferent classes that we use, and not importing it localy all the time.
 import org.hua.App.Huffmantree.Node;
 
-public class App{
+public class App
+{
     public static void main(String[] args)
     {
 
@@ -26,17 +27,12 @@ public class App{
         Huffmantree h = new Huffmantree();
 
         //this is the root node of the tree, that we return from the Huffman() method.
-        Node node = h.Huffman();
-        h.storeTree(node);
+        h.storeTree(h.Huffman());
 
         //After we store the tree with the help of the storeTree method of Huffmantree class we read the tree and store
         //its root in a node object witht the help of the GetTree class.
-        node = h.getTree();
-        h.storeEncodingMap(h.buildEncodingMap(node));
+        h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
 
-
-
-        
     }
 
     //Handling expetions the method might throw due to the absence of the file.

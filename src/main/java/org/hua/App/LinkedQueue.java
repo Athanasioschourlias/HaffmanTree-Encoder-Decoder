@@ -3,33 +3,39 @@ package org.hua.App;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedQueue<E> implements Queue<E>  {
+public class LinkedQueue<E> implements Queue<E>
+{
 
 	private Node<E> head,tail;
 	private int size;
 
-	public LinkedQueue(){
+	public LinkedQueue()
+	{
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
 	}
 
 
-	private static class Node<E>{
+	private static class Node<E>
+	{
 		public E data;
 		public Node<E> next;
 	}
 
 	@Override
-	public void push(E elem) {
+	public void push(E elem)
+	{
 		Node<E> n = new Node<>();
 		n.data = elem;
 		n.next = null;
 
-		if(head == null){
+		if(head == null)
+		{
 			//queue is empty
 			head = n;
-		}else {
+		}else
+		{
 			//queue not empty
 			tail.next = n;
 		}
@@ -38,8 +44,10 @@ public class LinkedQueue<E> implements Queue<E>  {
 	}
 
 	@Override
-	public E pop() {
-		if(isEmpty()){
+	public E pop()
+	{
+		if(isEmpty())
+		{
 			throw new NoSuchElementException();
 		}
 
@@ -65,8 +73,10 @@ public class LinkedQueue<E> implements Queue<E>  {
 	}
 
 	@Override
-	public E first() {
-		if(isEmpty()){
+	public E first()
+	{
+		if(isEmpty())
+		{
 			throw new NoSuchElementException();
 		}
 
@@ -79,17 +89,20 @@ public class LinkedQueue<E> implements Queue<E>  {
 	}
 
 	@Override
-	public boolean isEmpty() {
+	public boolean isEmpty()
+	{
 		return size == 0;
 	}
 
 	@Override
-	public int size() {
+	public int size()
+	{
 		return size;
 	}
 
 	@Override
-	public void clear() {
+	public void clear()
+	{
 		this.head = null;
 		this.tail = null;
 		this.size = 0;
@@ -98,12 +111,14 @@ public class LinkedQueue<E> implements Queue<E>  {
 
 
 	@Override
-	public Iterator<E> iterator() {
+	public Iterator<E> iterator()
+	{
 		//with the keyword this we "give" the iterator the specific list we are right now to iterate.
 		return new QueueIterator(this);
 	}
 
-	private class  QueueIterator implements Iterator<E>{
+	private class  QueueIterator implements Iterator<E>
+	{
 
 		Node<E> current;
 
@@ -115,12 +130,14 @@ public class LinkedQueue<E> implements Queue<E>  {
 
 		// returns false if next element does not exist
 		@Override
-		public boolean hasNext() {
+		public boolean hasNext()
+		{
 			return current != null;
 		}
 
 		@Override
-		public E next() {
+		public E next()
+		{
 			E data = current.data;
 			current = current.next;
 			return data;

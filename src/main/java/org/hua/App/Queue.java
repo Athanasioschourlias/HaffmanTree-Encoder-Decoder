@@ -6,18 +6,21 @@ package org.hua.App;
 
 import java.util.Iterator;
 
-public interface Queue<E> extends Iterable<E> {
+public interface Queue<E> extends Iterable<E>
+{
 
 	/**
 	 * Push a new element into the queue
 	 * 
 	 * @param elem the element
 	 */
+
 	void push(E elem);
 	
 	/**
 	 * Pop last element from the queue
 	 */
+
 	E pop();
 	
 	/**
@@ -25,6 +28,7 @@ public interface Queue<E> extends Iterable<E> {
 	 *  
 	 * @return the first element of the queue
 	 */
+
 	E first();
 	
 	/**
@@ -32,6 +36,7 @@ public interface Queue<E> extends Iterable<E> {
 	 * 
 	 * @return true if empty, false otherwise
 	 */
+
 	boolean isEmpty();
 	
 	/**
@@ -39,11 +44,13 @@ public interface Queue<E> extends Iterable<E> {
 	 * 
 	 * @return the size of the queue
 	 */
+
 	int size();
 	
 	/**
 	 * Clear the queue
 	 */
+
 	void clear();
 
 	/**
@@ -51,6 +58,7 @@ public interface Queue<E> extends Iterable<E> {
 	 *
 	 * @return a key iterator
 	 */
+
 	@Override
 	Iterator<E> iterator();
 	

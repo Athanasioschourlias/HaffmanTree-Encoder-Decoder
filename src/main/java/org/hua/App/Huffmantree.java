@@ -31,7 +31,8 @@ public class Huffmantree implements Serializable
      * @return HashMap
      */
 
-    public HashMap buildEncodingMap(Node root) {
+    public HashMap buildEncodingMap(Node root)
+    {
         //building the paths to each letter and storing every letter and it's path at a hashmap.
         LookupTableImpl(root ,list);
 
@@ -43,7 +44,8 @@ public class Huffmantree implements Serializable
         BufferedWriter outputStream = null;
 
 
-        try {
+        try
+        {
             outputStream = new BufferedWriter(new FileWriter("codes.dat"));
 
             for (int i = 1; i < 128; i++) {
@@ -55,15 +57,20 @@ public class Huffmantree implements Serializable
                 outputStream.write("\n");
 
             }
-        } catch (IOException e){
+        } catch (IOException e)
+        {
 
             e.printStackTrace();
 
-        }finally {
-            if (outputStream != null) {
-                try {
+        }finally
+        {
+            if (outputStream != null)
+            {
+                try
+                {
                     outputStream.close();
-                } catch (IOException e) {
+                } catch (IOException e)
+                {
                     e.printStackTrace();
                 }
             }
@@ -85,7 +92,8 @@ public class Huffmantree implements Serializable
         {
             for (String s : list)
             {
-                if(s!=null) {
+                if(s!=null)
+                {
                     string = string + s ;
                 }
             }
@@ -95,33 +103,17 @@ public class Huffmantree implements Serializable
         }
     }
 
-//    public HashMap buildEncodingMap(Node root) {
-//        HashMap<Integer, String> table = new HashMap<>();
-//        LookupTableImpl(root,"", table);
-//        return table;
-//    }
-//
-//    public void LookupTableImpl(Node node, String string, HashMap<Integer, String> table) {
-//        //if a node has children
-//        if(!node.isLeaf()){
-//            //go on the left child and append a 0
-//            LookupTableImpl(node.left, string +'0',table);
-//            //go on the right child and append a 1
-//            LookupTableImpl(node.right, string + '1',table);
-//        }else{
-//            //if node doesnt have children then put the whole string that was created to our hashmap
-//            table.put(node.letter, string);
-//        }
-//    }
 
     /**
      * This method takes the root node of the huffman tree that Huffamn() method created and stores the Huffman tree
      * in a file tree.dat.
      * @param root
      */
-    public void storeTree(Node root) {
+    public void storeTree(Node root)
+    {
         String dataFile = "tree.dat";
-        try {
+        try
+        {
             FileOutputStream fileOut = new FileOutputStream(dataFile);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(root);
@@ -138,20 +130,25 @@ public class Huffmantree implements Serializable
      * file.
      * @return Node, root of the huffman tree we stored.
      */
-    public Node getTree(){
+    public Node getTree()
+    {
         String dataFile = "tree.dat";
         ObjectInputStream in;
         Node N=null;
-        try {
+        try
+        {
             in = new ObjectInputStream(new
                     BufferedInputStream(new FileInputStream(dataFile)));
-            try {
+            try
+            {
                 N = (Node) in.readObject();
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e)
+            {
                 e.printStackTrace();
             }
 
-        } catch (IOException e){
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
 
@@ -169,7 +166,8 @@ public class Huffmantree implements Serializable
         int[] frq = ReadFrequencies(filename);
         ArrayMinHeap<Node> minheap = new ArrayMinHeap<>();
         //creating the nodes without children
-        for(char i=1;i<ASCII_TABLE;i++){
+        for(char i=1;i<ASCII_TABLE;i++)
+        {
 
             minheap.insert(new Node(i,frq[i],null,null));
 
@@ -234,7 +232,8 @@ public class Huffmantree implements Serializable
             this.right = right;
 
         }
-        boolean isLeaf(){
+        boolean isLeaf()
+        {
             return this.left == null && this.right == null;
         }
         @Override

@@ -66,10 +66,6 @@ public class Frequencies
             {
 
                 c =c + count[i];
-
-                //System.out.println("ascii char " +(char)i+" with number " +i+ " is printed " +count[i] );
-                //System.out.println(c);
-
                 //it count how many characters exist in this file
             }
 
@@ -77,7 +73,6 @@ public class Frequencies
             for (int i = 0; i < 128; i++)
 
             {
-                //double f = count[i]/c ;
                 String s = String.valueOf(count[i]);
                 byte[] d = s.getBytes();
                 String s1 = String.valueOf(i);
@@ -86,16 +81,12 @@ public class Frequencies
                 out.write(32);
                 out.write(d);
                 out.write(nLine);
-
-
             }
             out.write(nLine);
 
         } catch (IOException x)
         {
-
             System.err.println(x);
-
         }
         /**
          * Releasing System Resources:
@@ -107,7 +98,6 @@ public class Frequencies
          * application's performance. The try-with-resources statement,
          * described in the next section, handles this step for you.
          */
-
 
         //cheking how many times we've written to the file.
         fileCounter++;
@@ -157,12 +147,8 @@ public class Frequencies
          * application's performance. The try-with-resources statement,
          * described in the next section, handles this step for you.
          */
-        
 
     }
-
-
-
 }
 
 
