@@ -11,14 +11,9 @@ To install maven
 sudo apt-get install maven
 ```
 
-Compile using 
+Compile using and run with 
 
 ```
-mvn install
+mvn compile exec:java -Dexec.mainClass=org.hua.App.App -Dexec.args="arg1 arg2" 
 ```
 
-Run main using 
-
-```
-java -cp target/Assigment-1.0-SNAPSHOT.jar org.hua.App.App
-```
