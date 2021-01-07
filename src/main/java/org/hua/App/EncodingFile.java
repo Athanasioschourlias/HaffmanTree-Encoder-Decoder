@@ -1,8 +1,10 @@
 package org.hua.App;
 
+import java.util.Map;
+
 public class EncodingFile
 {
-    public static void compress(boolean force) {
+    public void compress(boolean force) {
         TextFile textFile = new TextFile(input, 'r');
 
         /* Calculate Character Frequencies */
@@ -89,41 +91,6 @@ public class EncodingFile
             System.out
                     .println("The file cannot be compressed to a smaller size.");
         }
-
-    }
-
-    public static boolean decompress() {
-
-        BinaryFile binaryFile = new BinaryFile(input, 'r');
-        char h = binaryFile.readChar();
-        char f = binaryFile.readChar();
-
-        if (h != 'H' || f != 'F') {
-            System.out
-                    .println("This is not a compressed file. Cannot decopress.");
-            binaryFile.close();
-            return false;
-        }
-
-        int padding = (int) binaryFile.readChar();
-
-        tree = new HuffTree();
-
-        /* Build Lookup Table */
-
-        System.out.println("Building decompression tree...");
-        tree.buildDecompressionTree(binaryFile);
-        System.out.println("Building decoding table...");
-        decodingTable = tree.buildDecodingTable();
-
-        TextFile textFile = new TextFile(output, 'w');
-        System.out.println("Decoding text...");
-        tree.decodeText(binaryFile, textFile, padding);
-        freq = tree.getFreqs();
-
-        binaryFile.close();
-
-        return true;
 
     }
 

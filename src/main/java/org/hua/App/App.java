@@ -33,6 +33,16 @@ public class App
         //its root in a node object witht the help of the GetTree class.
         h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
 
+
+        //TODO:sanity checks
+        Frequencies in = makeFrequencies(args[1]);
+        in.writeFile();
+
+        h.storeTree(h.Huffman());
+        h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
+
+
+
     }
 
     //Handling expetions the method might throw due to the absence of the file.
