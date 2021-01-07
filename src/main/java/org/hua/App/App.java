@@ -35,7 +35,12 @@ public class App
 
 
         //TODO:sanity checks
-        Frequencies in = makeFrequencies(args[1]);
+        if(args.length>1){
+            System.out.println("Usage: arguments must be 1");
+            System.exit(0);
+        }
+        Frequencies in = makeFrequencies(args[0]);
+        System.out.println(args[0]);
         in.writeFile();
 
         h.storeTree(h.Huffman());
