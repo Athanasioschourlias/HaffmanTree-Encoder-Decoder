@@ -35,8 +35,8 @@ public class App
 
 
         //TODO:sanity checks
-        if(args.length>1){
-            System.out.println("Usage: arguments must be 1");
+        if(args.length>2){
+            System.out.println("Usage: arguments must be 2");
             System.exit(0);
         }
         Frequencies in = makeFrequencies(args[0]);
