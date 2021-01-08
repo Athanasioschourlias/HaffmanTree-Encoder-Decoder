@@ -1,9 +1,6 @@
 package org.hua.App;
 
 import java.io.FileNotFoundException;
-//importing the huffman tree node that we made in the huffmantree class in order to store somewhere the nodes we returning
-//from the deferent classes that we use, and not importing it localy all the time.
-import org.hua.App.Huffmantree.Node;
 
 public class App
 {
@@ -58,7 +55,7 @@ public class App
             r = new Frequencies(filename);
         } catch (FileNotFoundException e)
         {
-            e.getMessage();
+            e.printStackTrace();
         }
         return r;
     }
