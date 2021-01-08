@@ -33,9 +33,8 @@ public class App
         //its root in a node object witht the help of the GetTree class.
         h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
 
-
-        //TODO:sanity checks
-        if(args.length>2){
+        System.out.printf("THIS IS THE FIRST ARGUMENT %s !!!!!!!!!\n", args[0]);
+        if(args.length == 0 || args.length > 2){
             System.out.println("Usage: arguments must be 2");
             System.exit(0);
         }

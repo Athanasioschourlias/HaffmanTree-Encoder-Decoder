@@ -16,15 +16,3 @@ Compile using and run with
 ```
 mvn compile exec:java -Dexec.mainClass=org.hua.App.App -Dexec.args="arg1 arg2" 
 ```
-
-Create a jar using
-
-```
-mvn package 
-```
-
-Run main using
-
-```
-java -cp target/Assigment-1.0-SNAPSHOT.jar org.hua.App.App
-```
