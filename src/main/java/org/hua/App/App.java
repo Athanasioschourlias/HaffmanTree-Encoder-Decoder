@@ -1,13 +1,6 @@
 package org.hua.App;
 
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
 
 public class App
 {
@@ -50,7 +43,7 @@ public class App
 
         EncodingFile encode = new EncodingFile();
 
-        encode.compress(h.buildEncodingMap(h.getTree()), args[1]);
+        encode.ReadCompressWrite("codes.dat", args[0], args[1]);
     }
 
     //Handling expetions the method might throw due to the absence of the file.

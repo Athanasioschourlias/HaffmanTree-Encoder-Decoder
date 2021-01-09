@@ -51,7 +51,7 @@ public class Huffmantree implements Serializable
 
                 String s = String.valueOf(i);
                 outputStream.write(s);
-                outputStream.write("->");
+                outputStream.write(" ");
                 outputStream.write(cdmap.get(i));
                 outputStream.write("\n");
 
