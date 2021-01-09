@@ -36,7 +36,7 @@ public class App
         //its root in a node object witht the help of the GetTree class.
         h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
 
-//        System.out.printf("THIS IS THE FIRST ARGUMENT %s !!!!!!!!!\n", args[0]);
+
         if(args.length == 0 || args.length > 2){
             System.out.println("Usage: arguments must be 2");
             System.exit(0);
@@ -47,49 +47,10 @@ public class App
 
         h.storeTree(h.Huffman());
         h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
-        HashMap<Integer, String> cdmap = h.buildEncodingMap(h.getTree());
 
-        BufferedWriter outputStream = null;
-        try
-        {
+        EncodingFile encode = new EncodingFile();
 
-//            String filePath = args[1];
-            outputStream = new BufferedWriter(new FileWriter(args[1]));
-            // file to bytes[]
-//            byte[] bytes = Files.readAllBytes(Paths.get(filePath));
-            for (int i = 1; i < 128; i++)
-            {
-                outputStream.write(cdmap.get(i));
-                outputStream.write("\n");
-
-            }
-
-            // bytes[] to file
-//            Path path = Paths.get(args[1]);
-//            Files.write(path, bytes);
-
-            System.out.println("Done");
-
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-        }finally
-        {
-            if (outputStream != null)
-            {
-                try
-                {
-                    outputStream.close();
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }
-        //EncodingFile encode = new EncodingFile();
-        //encode.encodeFile("codes.dat");
-
-
+        encode.compress(h.buildEncodingMap(h.getTree()), args[1]);
     }
 
     //Handling expetions the method might throw due to the absence of the file.
