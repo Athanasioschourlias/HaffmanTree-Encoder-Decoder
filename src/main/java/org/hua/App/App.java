@@ -43,9 +43,6 @@ public class App
         h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
 
         EncodingFile encode = new EncodingFile();
-//
-//        encode.ReadCompressWrite("codes.dat", args[0], args[1]);
-
 
         File codings = new File("codes.dat");
         File infile = new File(args[0]);
