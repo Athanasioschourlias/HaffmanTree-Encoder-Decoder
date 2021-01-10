@@ -89,11 +89,12 @@ public class Huffmantree implements Serializable
             list.pop();
         }else
         {
+
             for (String s : list)
             {
                 if(s!=null)
                 {
-                    string = string + s ;
+                    string = string + s;
                 }
             }
             codingmap.put(cur.letter , string);

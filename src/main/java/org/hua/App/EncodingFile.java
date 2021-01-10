@@ -1,86 +1,96 @@
 package org.hua.App;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.BitSet;
+
 
 public class EncodingFile {
 
-    public void ReadCompressWrite(String codesDat, String inputFile , String outputFile) {
-        File file = new File(codesDat);
-        Scanner scan = null;
-        int[] ascii = new int[128];
-        String[] cdmap = new String[128];
-//        HashMap<Integer, String> cdmap = new HashMap<>();
-        try {
-            BufferedReader inputStream = new BufferedReader(new FileReader(codesDat));
-            scan = new Scanner(file);
-            for (int i = 1; i < 128; i++)
+    private int nextChar;
+    private String[] cdmap;
+
+    public EncodingFile(){
+        this.nextChar = 0;
+         this.cdmap = new String[128];
+    }
+
+    public void compress(File codings, File inputFile,String outputFile) {
+
+        //reading the huffman encoding values for each letter from the codes.dat file
+        cdmap = readCodes(codings);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader (inputFile)))
+        {
+
+            FileOutputStream out = new FileOutputStream(outputFile);;
+            do
             {
-                ascii[i]=scan.nextInt();
-                cdmap[i]=scan.nextLine();
-            }
-        }catch (IOException x)
+                nextChar = reader.read();
+                //Reading the ascii chars
+                if (nextChar >= 1 && nextChar < 128){
+
+                    try {
+
+                        out.write(setingBits(cdmap[nextChar]).toByteArray());
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }while (nextChar != -1);
+
+            out.close();
+
+        } catch (IOException x)
         {
             System.err.format("IOException: %s%n", x);
         }
-        BufferedWriter outputStream = null;
-        int nextChar;
-        try
-        {
-            outputStream = new BufferedWriter(new FileWriter(outputFile));
 
+        System.out.println("Done");
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(inputFile)))
-            {
-                /**
-                 *  Reading each character in the file, with the read() function:
-                 *  The read() method of BufferedReader class in Java is used to read a single character
-                 *  from the given buffered reader. This read() method reads one character at a
-                 *  time from the buffered stream and return it as an integer value.
-                 */
-                do
-                {
-                    nextChar = reader.read();
+    }
 
-                    //increasing the counter of each character from the ASCII table
+    private static BitSet setingBits(String cdmap){
 
-                    if (nextChar >= 1 && nextChar <= 128){
-                        outputStream.write(cdmap[nextChar]);
-                        outputStream.write(" ");
-                    }
+        BitSet buffer = new BitSet(cdmap.length());
 
-                }while (nextChar != -1);
+        for(int i=0; i < cdmap.length(); i++){
 
-            } catch (IOException x)
-            {
-                System.err.format("IOException: %s%n", x);
-            }
+            if (cdmap.charAt(i) == '1')
+                buffer.set(i, true);
+            else
+                buffer.set(i, false);
 
-            System.out.println("Done");
-
-        } catch (
-                IOException e)
-        {
-            e.printStackTrace();
-        }finally
-        {
-            if (outputStream != null)
-            {
-                try
-                {
-                    outputStream.close();
-                } catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }
         }
+
+        return buffer;
     }
 
-    private void compress()
-    {
-        //here we have to compress the haffman coding
-    }
+    private static String[] readCodes(File codings){
+        String nextline;
 
+        String[] cdmap = new String[128];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader (codings)))
+        {
+            String[] answer;
+            for(int i=1; i < 128; i++){
+
+                nextline = reader.readLine();
+
+                answer = nextline.split(" ");
+
+                cdmap[i]= answer[1];
+//                System.out.println(answer[1]);
+                //Reading the ascii chars
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return cdmap;
+
+    }
 }
