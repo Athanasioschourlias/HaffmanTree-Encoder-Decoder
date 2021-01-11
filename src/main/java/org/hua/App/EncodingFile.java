@@ -1,7 +1,6 @@
 package org.hua.App;
 
 import java.io.*;
-import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.util.BitSet;
 
@@ -11,7 +10,6 @@ public class EncodingFile {
     private int nextChar;
     private String[] cdmap;
     private static int counter =0;
-//    private BitSet buffer = new BitSet();
 
     public EncodingFile(){
         this.nextChar = 0;
@@ -24,7 +22,7 @@ public class EncodingFile {
         cdmap = readCodes(codings);
         try (BufferedReader reader = new BufferedReader(new FileReader (inputFile)))
         {
-            BufferedWriter ot = new BufferedWriter(new FileWriter("hello.dat"));
+
             FileOutputStream out = new FileOutputStream(outputFile);;
             do
             {
@@ -33,8 +31,6 @@ public class EncodingFile {
                 if (nextChar >= 1 && nextChar < 128){
 
                     try {
-                        ot.write(cdmap[nextChar]);
-//                        ot.write(" ");
                         out.write(setingBits(cdmap[nextChar]).toByteArray());
 
                     } catch (IOException e) {
@@ -43,10 +39,10 @@ public class EncodingFile {
                 }
 
             }while (nextChar != -1);
-            ot.close();
+
             byte[] bytes = ByteBuffer.allocate(4).putInt(counter).array();
+
             out.write(bytes,0,4);
-            System.out.println(counter);
             out.close();
 
         } catch (IOException x)
