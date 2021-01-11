@@ -82,7 +82,6 @@ public class EncodingFile {
 
             }while (nextChar != -1);
 
-            byte[] bytes = ByteBuffer.allocate(4).putInt(counterbit).array();
             if(!stuck.isEmpty())
             {
                 for (int j=0;j<stuck.size()-1;j++)
@@ -102,7 +101,6 @@ public class EncodingFile {
             byte[] eofByte="EOF".getBytes();
             out.write(eofByte,0,3);
             out.close();
-
         } catch (IOException x)
         {
             System.err.format("IOException: %s%n", x);
@@ -126,7 +124,6 @@ public class EncodingFile {
 
                 cdmap[i]= answer[1];
                 //Reading the ascii chars
-
             }
         } catch (IOException e) {
             e.printStackTrace();
