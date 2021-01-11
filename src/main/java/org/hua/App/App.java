@@ -36,7 +36,6 @@ public class App
             System.exit(0);
         }
         Frequencies in = makeFrequencies(args[0]);
-        System.out.println(args[0]);
         in.writeFile();
 
         h.storeTree(h.Huffman());
