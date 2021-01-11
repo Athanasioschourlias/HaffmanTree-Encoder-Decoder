@@ -8,6 +8,7 @@ public class EncodingFile {
 
     private int nextChar;
     private String[] cdmap;
+    private static BitSet buffer = new BitSet();
 
     public EncodingFile(){
         this.nextChar = 0;
@@ -52,8 +53,6 @@ public class EncodingFile {
     }
 
     private static BitSet setingBits(String cdmap){
-
-        BitSet buffer = new BitSet(cdmap.length());
 
         for(int i=0; i < cdmap.length(); i++){
 
