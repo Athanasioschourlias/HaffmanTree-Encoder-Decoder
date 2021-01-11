@@ -13,7 +13,7 @@ public class EncodingFile {
 
     public EncodingFile(){
         this.nextChar = 0;
-         this.cdmap = new String[128];
+         this.cdmap = new String[256];
     }
 
     public void compress(File codings, File inputFile,String outputFile) {
@@ -28,7 +28,7 @@ public class EncodingFile {
             {
                 nextChar = reader.read();
                 //Reading the ascii chars
-                if (nextChar >= 1 && nextChar < 128){
+                if (nextChar >= 1 && nextChar < 256){
 
                     try {
                         out.write(setingBits(cdmap[nextChar]).toByteArray());
@@ -75,12 +75,12 @@ public class EncodingFile {
     private static String[] readCodes(File codings){
         String nextline;
 
-        String[] cdmap = new String[128];
+        String[] cdmap = new String[256];
 
         try (BufferedReader reader = new BufferedReader(new FileReader (codings)))
         {
             String[] answer;
-            for(int i=1; i < 128; i++){
+            for(int i=1; i < 256; i++){
 
                 nextline = reader.readLine();
 

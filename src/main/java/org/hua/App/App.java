@@ -11,7 +11,7 @@ public class App
         Frequencies r2 = makeFrequencies("input2.txt");
         Frequencies r3 = makeFrequencies("input3.txt");
 
-        for(int i = 0; i < 128; i++)
+        for(int i = 0; i < 256; i++)
         {
             r.count[i]=r.count[i]+r2.count[i]+r3.count[i];
         }

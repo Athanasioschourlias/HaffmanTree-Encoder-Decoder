@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class Frequencies
 {
-    public final long[] count = new long[128];
+    public final long[] count = new long[256];
     private char ch;
     private int nextChar;
     private final File InFile;
@@ -62,7 +62,7 @@ public class Frequencies
             String line = "\n";
             byte[] nLine = line.getBytes();
             long c=0;
-            for(int i = 0; i < 128; i++)
+            for(int i = 0; i < 256; i++)
             {
 
                 c =c + count[i];
@@ -70,7 +70,7 @@ public class Frequencies
             }
 
 
-            for (int i = 0; i < 128; i++)
+            for (int i = 0; i < 256; i++)
 
             {
                 String s = String.valueOf(count[i]);
@@ -124,7 +124,7 @@ public class Frequencies
 
                 //increasing the counter of each character from the ASCII table
 
-                if (nextChar >= 0 && nextChar <= 127){
+                if (nextChar >= 0 && nextChar <= 255){
 
                     //count is a table of int's
                     count[nextChar]++;

@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 class ArrayMinHeap<Node extends Comparable<Node>> implements MinHeap<Node>
 {
 
-    private final int CAP = 128;//Because we want to start from 1.
+    private final int CAP = 256;//Because we want to start from 1.
     private Node[] HeapArray;
     private static final int root = 1;//the Heap[1] is the root of the binary tree.
     private int size;

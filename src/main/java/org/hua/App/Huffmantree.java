@@ -17,7 +17,7 @@ public class Huffmantree implements Serializable
     //No argument constractor
     public Huffmantree()
     {
-        this.ASCII_TABLE=128;
+        this.ASCII_TABLE=256;
         //This is the standard file that we read the frequences from.
         this.filename="frequencies.dat";
     }
@@ -47,7 +47,7 @@ public class Huffmantree implements Serializable
         {
             outputStream = new BufferedWriter(new FileWriter("codes.dat"));
 
-            for (int i = 1; i < 128; i++) {
+            for (int i = 1; i < 256; i++) {
 
                 String s = String.valueOf(i);
                 outputStream.write(s);
@@ -205,9 +205,9 @@ public class Huffmantree implements Serializable
         {
             e.printStackTrace();
         }
-        int[]  ascii = new int[128];
-        int[] frq = new int[128];
-        for(int i=0;i<=127;i++)
+        int[]  ascii = new int[256];
+        int[] frq = new int[256];
+        for(int i=0;i<=255;i++)
         {
             ascii[i] = scan.nextInt();
             frq[i] = scan.nextInt();
