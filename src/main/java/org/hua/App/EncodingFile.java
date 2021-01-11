@@ -2,6 +2,7 @@ package org.hua.App;
 
 import java.io.*;
 import java.nio.ByteBuffer;
+import java.util.ArrayDeque;
 import java.util.BitSet;
 
 
@@ -22,21 +23,40 @@ public class EncodingFile {
         cdmap = readCodes(codings);
         try (BufferedReader reader = new BufferedReader(new FileReader (inputFile)))
         {
+            ArrayDeque<BitCount> stuck = new ArrayDeque<>();
 
             FileOutputStream out = new FileOutputStream(outputFile);;
             do
             {
                 nextChar = reader.read();
-                //Reading the ascii chars
-                if (nextChar >= 1 && nextChar < 256){
 
-                    try {
-                        out.write(setingBits(cdmap[nextChar]).toByteArray());
+                BitSet buffer = new BitSet();
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                if( (cdmap[nextChar].length() % 8) != 0 ){
+                    if(stuck.isEmpty()) {
+                     //if the bitset has some padding then we are making an object that
+                        EncodingFile.BitCount b = new EncodingFile.BitCount((cdmap[nextChar].length() % 8),cdmap[nextChar].length(), buffer);
+                        stuck.add(b);
+
+                    }else {
+                        BitSet tmp = new BitSet();
+
+                        for(int i = cdmap[nextChar].length() + 1; i < (cdmap[nextChar].length() + (cdmap[nextChar].length() % 8) + 1); i++){
+
+
+
+
+                        }
+
+
                     }
+
+                }else if((cdmap[nextChar].length() % 8) == 0 && stuck.isEmpty()){
+                    //if the Bitset DOES NOT HAVE PADDING WE JUST WRITE IT TO THE FILE.
+                    out.write(buffer.toByteArray());
                 }
+
+
 
             }while (nextChar != -1);
 
@@ -54,22 +74,20 @@ public class EncodingFile {
 
     }
 
-    private static BitSet setingBits(String cdmap){
-        BitSet buffer = new BitSet(cdmap.length());
-        for(int i=0; i < cdmap.length(); i++){
 
-            if (cdmap.charAt(i) == '1')
-            {
-                buffer.set(i, true);
-                counter++;
-            }else
-            {
-                buffer.set(i, false);
-                counter++;
-            }
+    private static class BitCount{
+
+        public int modulo;
+        public int bits;
+        public BitSet byff;
+
+        public BitCount(int modulo,int bits, BitSet byff){
+            this.modulo=modulo;
+            this.bits=bits;
+            this.byff=byff;
+
         }
 
-        return buffer;
     }
 
     private static String[] readCodes(File codings){
