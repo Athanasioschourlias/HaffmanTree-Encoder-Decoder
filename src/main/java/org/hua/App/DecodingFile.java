@@ -31,7 +31,6 @@ public class DecodingFile
         return temp;
     }
 
-
     public int[] readHufFile(String inputfile) {
         int[] codings;
         BitSet bits;
