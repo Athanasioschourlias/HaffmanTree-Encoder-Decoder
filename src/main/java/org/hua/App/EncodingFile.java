@@ -48,7 +48,6 @@ public class EncodingFile {
                                     stuck.removeFirst();
                                 }
                                 b=buffer.toByteArray();
-                                System.out.println(buffer.toString());
                                 out.write(b);
                                 counterByte++;
                                 buffer.clear();
@@ -70,7 +69,6 @@ public class EncodingFile {
                                     stuck.removeFirst();
                                 }
                                 b=buffer.toByteArray();
-                                System.out.println(buffer.toString());
                                 out.write(b);
                                 counterByte++;
                                 buffer.clear();
@@ -108,7 +106,6 @@ public class EncodingFile {
             System.err.format("IOException: %s%n", x);
         }
         System.out.println("Done");
-        System.out.println(counterByte);
     }
 
     private static String[] readCodes(File codings){

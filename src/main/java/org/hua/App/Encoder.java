@@ -7,17 +7,17 @@ public class Encoder
 {
     public static void main(String[] args) {
 
-
+        Huffmantree h = new Huffmantree();
         if(args.length == 0 || args.length > 2){
             System.out.println("Usage: arguments must be 2");
             System.exit(0);
         }
 
-//        Frequencies in = makeFrequencies(args[0]);
-//        in.writeFile();
-//
-//        h.storeTree(h.Huffman());
-//        h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
+        Frequencies in = makeFrequencies(args[0]);
+        in.writeFile();
+
+        h.storeTree(h.Huffman());
+        h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
 
         EncodingFile encode = new EncodingFile();
 
