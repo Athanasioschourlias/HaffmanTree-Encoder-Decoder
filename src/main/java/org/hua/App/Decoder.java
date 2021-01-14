@@ -1,6 +1,6 @@
 package org.hua.App;
 
-public class App2
+public class Decoder
 {
     public static void main(String[] args)
     {

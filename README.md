@@ -11,8 +11,14 @@ To install maven
 sudo apt-get install maven
 ```
 
-Compile using and run with 
+Compile and run Encoder 
 
 ```
-mvn compile exec:java -Dexec.mainClass=org.hua.App.App -Dexec.args="arg1 arg2" 
+mvn compile exec:java -Dexec.mainClass=org.hua.App.Encoder -Dexec.args="arg1 arg2" 
+```
+
+Compile and run Decoder
+
+```
+mvn compile exec:java -Dexec.mainClass=org.hua.App.Decoder -Dexec.args="arg1 arg2" 
 ```

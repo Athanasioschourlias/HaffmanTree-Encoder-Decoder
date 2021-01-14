@@ -3,7 +3,7 @@ package org.hua.App;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class App
+public class Encoder
 {
     public static void main(String[] args) throws FileNotFoundException {
 
