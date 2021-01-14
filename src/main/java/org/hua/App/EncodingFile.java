@@ -11,7 +11,7 @@ public class EncodingFile {
     private int nextChar;
     private String[] cdmap;
     private static int counterbit =0;
-    private static int counterByte=0;
+    public static int counterByte=0;
     ArrayDeque<Integer> stuck = new ArrayDeque<>();
 
     public EncodingFile(){
@@ -27,7 +27,7 @@ public class EncodingFile {
         byte[] b;
         try (BufferedReader reader = new BufferedReader(new FileReader (inputFile)))
         {
-            FileOutputStream out = new FileOutputStream(outputFile);;
+            FileOutputStream out = new FileOutputStream(outputFile);
             do
             {
                 nextChar = reader.read();
@@ -43,11 +43,12 @@ public class EncodingFile {
                                 {
                                     if(stuck.getFirst()==1)
                                     {
-                                        buffer.set(j);
+                                        buffer.set(j,true);
                                     }
                                     stuck.removeFirst();
                                 }
                                 b=buffer.toByteArray();
+                                System.out.println(buffer.toString());
                                 out.write(b);
                                 counterByte++;
                                 buffer.clear();
@@ -64,11 +65,12 @@ public class EncodingFile {
                                 {
                                     if(stuck.getFirst()==1)
                                     {
-                                        buffer.set(j);
+                                        buffer.set(j,false);
                                     }
                                     stuck.removeFirst();
                                 }
                                 b=buffer.toByteArray();
+                                System.out.println(buffer.toString());
                                 out.write(b);
                                 counterByte++;
                                 buffer.clear();
@@ -106,6 +108,7 @@ public class EncodingFile {
             System.err.format("IOException: %s%n", x);
         }
         System.out.println("Done");
+        System.out.println(counterByte);
     }
 
     private static String[] readCodes(File codings){
