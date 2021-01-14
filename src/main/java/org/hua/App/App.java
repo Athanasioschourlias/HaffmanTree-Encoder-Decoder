@@ -1,7 +1,8 @@
+
 package org.hua.App;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+        import java.io.File;
+        import java.io.FileNotFoundException;
 
 public class App
 {
@@ -29,25 +30,6 @@ public class App
         //After we store the tree with the help of the storeTree method of Huffmantree class we read the tree and store
         //its root in a node object witht the help of the GetTree class.
         h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
-
-
-        if(args.length == 0 || args.length > 2){
-            System.out.println("Usage: arguments must be 2");
-            System.exit(0);
-        }
-        Frequencies in = makeFrequencies(args[0]);
-        in.writeFile();
-
-        h.storeTree(h.Huffman());
-        h.storeEncodingMap(h.buildEncodingMap(h.getTree()));
-
-        EncodingFile encode = new EncodingFile();
-
-        File codings = new File("codes.dat");
-        File infile = new File(args[0]);
-
-
-        encode.compress(codings ,infile, args[1]);
 
     }
 
