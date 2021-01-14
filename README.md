@@ -20,5 +20,5 @@ mvn compile exec:java -Dexec.mainClass=org.hua.App.Encoder -Dexec.args="arg1 arg
 Compile and run Decoder
 
 ```
-mvn compile exec:java -Dexec.mainClass=org.hua.App.Decoder -Dexec.args="arg1 arg2" 
+mvn compile exec:java -Dexec.mainClass=org.hua.App.Decoder -Dexec.args="arg2 arg1" 
 ```
