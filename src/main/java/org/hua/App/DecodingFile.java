@@ -31,16 +31,6 @@ public class DecodingFile
         return temp;
     }
 
-    private String toBinary(int num) {
-        StringBuffer sb = new StringBuffer();
-
-        for (int i = 0; i < 1; i++) {
-            sb.append(((num & 1) == 1) ? '1' : '0');
-            num >>= 1;
-        }
-
-        return sb.reverse().toString();
-    }
 
     public int[] readHufFile(String inputfile) {
         int[] codings;
