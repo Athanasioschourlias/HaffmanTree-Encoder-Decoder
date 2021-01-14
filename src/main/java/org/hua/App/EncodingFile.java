@@ -10,102 +10,84 @@ public class EncodingFile {
 
     private int nextChar;
     private String[] cdmap;
-    private static int counterbit =0;
-    private static int counterByte=0;
-    ArrayDeque<Integer> stuck = new ArrayDeque<>();
+    private static int counter =0;
 
     public EncodingFile(){
         this.nextChar = 0;
-         this.cdmap = new String[256];
+        this.cdmap = new String[256];
     }
 
     public void compress(File codings, File inputFile,String outputFile) {
 
         //reading the huffman encoding values for each letter from the codes.dat file
         cdmap = readCodes(codings);
-        BitSet buffer = new BitSet(8);
-        byte[] b;
         try (BufferedReader reader = new BufferedReader(new FileReader (inputFile)))
         {
+            ArrayDeque<BitCount> stuck = new ArrayDeque<>();
+
             FileOutputStream out = new FileOutputStream(outputFile);;
             do
             {
                 nextChar = reader.read();
-                //Reading the ascii chars
-                if (nextChar >= 1 && nextChar < 256){
-                    for(int i=0;i< cdmap[nextChar].length();i++)
-                    {
-                        if(cdmap[nextChar].charAt(i)=='1')
-                        {
-                            if(stuck.size()==8)
-                            {
-                                for (int j=0;j<8;j++)
-                                {
-                                    if(stuck.getFirst()==1)
-                                    {
-                                        buffer.set(j);
-                                    }
-                                    stuck.removeFirst();
-                                }
-                                b=buffer.toByteArray();
-                                out.write(b);
-                                counterByte++;
-                                buffer.clear();
-                                stuck.clear();
-                            }
-                            stuck.add(1);
-                            counterbit++;
+
+                BitSet buffer = new BitSet();
+
+                if( (cdmap[nextChar].length() % 8) != 0 ){
+                    if(stuck.isEmpty()) {
+                        //if the bitset has some padding then we are making an object that
+                        EncodingFile.BitCount b = new EncodingFile.BitCount((cdmap[nextChar].length() % 8),cdmap[nextChar].length(), buffer);
+                        stuck.add(b);
+
+                    }else {
+                        BitSet tmp = new BitSet();
+
+                        for(int i = cdmap[nextChar].length() + 1; i < (cdmap[nextChar].length() + (cdmap[nextChar].length() % 8) + 1); i++){
+
+
+
+
                         }
-                        else
-                        {
-                            if(stuck.size()==8)
-                            {
-                                for (int j=0;j<8;j++)
-                                {
-                                    if(stuck.getFirst()==1)
-                                    {
-                                        buffer.set(j);
-                                    }
-                                    stuck.removeFirst();
-                                }
-                                b=buffer.toByteArray();
-                                out.write(b);
-                                counterByte++;
-                                buffer.clear();
-                                stuck.clear();
-                            }
-                            stuck.add(0);
-                            counterbit++;
-                        }
+
+
                     }
+
+                }else if((cdmap[nextChar].length() % 8) == 0 && stuck.isEmpty()){
+                    //if the Bitset DOES NOT HAVE PADDING WE JUST WRITE IT TO THE FILE.
+                    out.write(buffer.toByteArray());
                 }
+
+
 
             }while (nextChar != -1);
 
-            if(!stuck.isEmpty())
-            {
-                for (int j=0;j<stuck.size()-1;j++)
-                {
-                    if(stuck.getFirst()==1)
-                    {
-                        buffer.set(j);
-                    }
-                    stuck.removeFirst();
-                }
-                b=buffer.toByteArray();
-                out.write(b);
-                counterByte++;
-                buffer.clear();
-                stuck.clear();
-            }
-            byte[] eofByte="EOF".getBytes();
-            out.write(eofByte,0,3);
+            byte[] bytes = ByteBuffer.allocate(4).putInt(counter).array();
+
+            out.write(bytes,0,4);
             out.close();
+
         } catch (IOException x)
         {
             System.err.format("IOException: %s%n", x);
         }
+
         System.out.println("Done");
+
+    }
+
+
+    private static class BitCount{
+
+        public int modulo;
+        public int bits;
+        public BitSet byff;
+
+        public BitCount(int modulo,int bits, BitSet byff){
+            this.modulo=modulo;
+            this.bits=bits;
+            this.byff=byff;
+
+        }
+
     }
 
     private static String[] readCodes(File codings){
@@ -123,11 +105,15 @@ public class EncodingFile {
                 answer = nextline.split(" ");
 
                 cdmap[i]= answer[1];
+//                System.out.println(answer[1]);
                 //Reading the ascii chars
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return cdmap;
+
     }
 }
