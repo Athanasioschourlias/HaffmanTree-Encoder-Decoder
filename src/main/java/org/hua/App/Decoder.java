@@ -1,5 +1,6 @@
 package org.hua.App;
 
+import java.io.*;
 import java.util.Arrays;
 
 public class Decoder
@@ -7,49 +8,20 @@ public class Decoder
     
     
     
-    //Decompressing the array of 0 and 1
-    public static String decompress(int[] codings){
-        
-        StringBuilder sb = new StringBuilder();
-        //creating our huffmantree object
-        Huffmantree huffmantree = new Huffmantree();
-        //returning the root of the tree
-        Huffmantree.Node root = huffmantree.getTree();
-        //setting root as the current 
-        Huffmantree.Node cur = root;
-        
-        int i =0;
-        while(i<codings.length){
-            //while current node not a leaf do the ifs depending on the int of the array
-            while(!cur.isLeaf()){
-                int bit = codings[i];
-                if(bit==1){
-                    cur=cur.right;
-                }else if (bit==0){
-                    cur=cur.left;
-                }else{
-                    throw new IllegalArgumentException("Invalid bit: "+bit);
-                }
-                i++;
-            }
-            //append to string builder
-            //casting integer to character
-            sb.append((char)cur.letter);
-            cur= root;
-        }
-        return sb.toString();
-    }
+
     public static void main(String[] args)
     {
-        
+        if(args.length == 0 || args.length > 2){
+            System.out.println("Usage: arguments must be 2");
+            System.exit(0);
+        }
         DecodingFile decode=new DecodingFile();
         int[] codings = decode.readHufFile(args[0]);
         //int[] codings=decode.readHufFile("result.huf");
-        String dec = decompress(codings);
-        System.out.println("The Decoded Message Is: "+dec);
-
+        String dec = decode.decompress(codings);
+        decode.writeStrToFile(args[1],dec);
         //the bits in our array from decodinfile
-        System.out.println(Arrays.toString(codings));
+//        System.out.println(Arrays.toString(codings));
         //codings=decode.readHufFile(args[0]);
         //Now you have an int Array with all bits and the root node of the tree
         //Create a method that take each int and uses the tree to find the letters

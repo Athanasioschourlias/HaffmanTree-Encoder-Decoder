@@ -1,5 +1,7 @@
 package org.hua.App;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -56,6 +58,52 @@ public class DecodingFile
             throw new RuntimeException(e.toString());
         }
         return codings;
+    }
+
+    //Decompressing the array of 0 and 1
+    public String decompress(int[] codings){
+
+        StringBuilder sb = new StringBuilder();
+        //creating our huffmantree object
+        Huffmantree huffmantree = new Huffmantree();
+        //returning the root of the tree
+        Huffmantree.Node root = huffmantree.getTree();
+        //setting root as the current
+        Huffmantree.Node cur = root;
+
+        int i =0;
+        while(i<codings.length-8){
+            //while current node not a leaf do the ifs depending on the int of the array
+            while(!cur.isLeaf()){
+                int bit = codings[i];
+                if(bit==1){
+                    cur=cur.right;
+                }else if (bit==0){
+                    cur=cur.left;
+                }else{
+                    throw new IllegalArgumentException("Invalid bit: "+bit);
+                }
+                i++;
+            }
+            //append to string builder
+            //casting integer to character
+            sb.append((char)cur.letter);
+            cur= root;
+
+        }
+        return sb.toString();
+    }
+
+    public void writeStrToFile(String outputfile,String str)
+    {
+        try
+        {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputfile));
+            writer.write(str);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
