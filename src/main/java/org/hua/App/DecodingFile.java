@@ -10,6 +10,7 @@ import java.util.BitSet;
 
 public class DecodingFile
 {
+    private static int counterBits;
 
     private static BitSet fromByte(byte b)
     {
@@ -35,20 +36,26 @@ public class DecodingFile
 
     public int[] readHufFile(String inputfile) {
         int[] codings;
+        int size=0;
         BitSet bits;
+
         try {
             Path path = Paths.get(inputfile);
             byte[] data = Files.readAllBytes(path);
-            codings = new int[(data.length-3)*8];
-            int size=0;
-            for(int j=0;j< data.length-3;j++)
+            byte[] tmp = new byte[4];
+            tmp[0]=data[data.length-4];
+            tmp[1]=data[data.length-3];
+            tmp[2]=data[data.length-2];
+            tmp[3]=data[data.length-1];
+            counterBits=convertByteArrayToInt2(tmp);
+            codings = new int[data.length*8];
+            for(int j=0;j<data.length;j++)
             {
                 bits = fromByte(data[j]);
                 //System.out.println(bits);
                 int[] intArray = bits2Ints(bits);
 
-
-                for (int i = 0; i < 8; i++)
+                for (int i=0; i < 8; i++)
                 {
                     codings[size]=intArray[i];
                     size++;
@@ -58,6 +65,13 @@ public class DecodingFile
             throw new RuntimeException(e.toString());
         }
         return codings;
+    }
+
+    private static int convertByteArrayToInt2(byte[] bytes) {
+        return ((bytes[0] & 0xFF) << 24) |
+                ((bytes[1] & 0xFF) << 16) |
+                ((bytes[2] & 0xFF) << 8) |
+                ((bytes[3] & 0xFF) << 0);
     }
 
     //Decompressing the array of 0 and 1
@@ -72,7 +86,8 @@ public class DecodingFile
         Huffmantree.Node cur = root;
 
         int i =0;
-        while(i<codings.length-8){
+        int notUsedBits = codings.length-(counterBits-4);
+        while(i<=codings.length-notUsedBits){
             //while current node not a leaf do the ifs depending on the int of the array
             while(!cur.isLeaf()){
                 int bit = codings[i];
@@ -104,6 +119,7 @@ public class DecodingFile
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Done");
     }
 
 }

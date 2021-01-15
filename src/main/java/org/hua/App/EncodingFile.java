@@ -10,7 +10,7 @@ public class EncodingFile {
 
     private int nextChar;
     private String[] cdmap;
-    private static int counterbit =0;
+    private int counterbit =0;
     public static int counterByte=0;
     ArrayDeque<Integer> stuck = new ArrayDeque<>();
 
@@ -37,6 +37,7 @@ public class EncodingFile {
                     {
                         if(cdmap[nextChar].charAt(i)=='1')
                         {
+
                             if(stuck.size()==8)
                             {
                                 for (int j=0;j<8;j++)
@@ -58,8 +59,10 @@ public class EncodingFile {
                         }
                         else
                         {
+
                             if(stuck.size()==8)
                             {
+
                                 for (int j=0;j<8;j++)
                                 {
                                     if(stuck.getFirst()==1)
@@ -84,7 +87,8 @@ public class EncodingFile {
 
             if(!stuck.isEmpty())
             {
-                for (int j=0;j<stuck.size()-1;j++)
+                int size = stuck.size();
+                for (int j=0;j<size;j++)
                 {
                     if(stuck.getFirst()==1)
                     {
@@ -98,8 +102,8 @@ public class EncodingFile {
                 buffer.clear();
                 stuck.clear();
             }
-            byte[] eofByte="EOF".getBytes();
-            out.write(eofByte,0,3);
+            byte [] bytes = ByteBuffer.allocate(4).putInt(counterbit).array();
+            out.write(bytes,0,4);
             out.close();
         } catch (IOException x)
         {
