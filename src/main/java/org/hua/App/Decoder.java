@@ -43,8 +43,8 @@ public class Decoder
     {
         
         DecodingFile decode=new DecodingFile();
-//        int[] codings = decode.readHufFile(args[0]);
-        int[] codings=decode.readHufFile("result.huf");
+        int[] codings = decode.readHufFile(args[0]);
+        //int[] codings=decode.readHufFile("result.huf");
         String dec = decompress(codings);
         System.out.println("The Decoded Message Is: "+dec);
 
