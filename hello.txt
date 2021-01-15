@@ -1,5 +1,2 @@
-<<<<<<< HEAD
 Hello world!
-=======
-hello world
->>>>>>> origin/BuildingUncopressingMachine
+

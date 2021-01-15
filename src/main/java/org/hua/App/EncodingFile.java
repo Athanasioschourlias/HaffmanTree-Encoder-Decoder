@@ -43,7 +43,7 @@ public class EncodingFile {
                                 {
                                     if(stuck.getFirst()==1)
                                     {
-                                        buffer.set(j,true);
+                                        buffer.set(j);
                                     }
                                     stuck.removeFirst();
                                 }
@@ -64,7 +64,7 @@ public class EncodingFile {
                                 {
                                     if(stuck.getFirst()==1)
                                     {
-                                        buffer.set(j,false);
+                                        buffer.set(j);
                                     }
                                     stuck.removeFirst();
                                 }
