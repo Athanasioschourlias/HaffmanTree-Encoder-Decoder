@@ -45,9 +45,9 @@ public class Decoder
         DecodingFile decode=new DecodingFile();
         int[] codings = decode.readHufFile(args[0]);
         String dec = decompress(codings);
-        System.out.println(dec);
+        System.out.println("The Decoded Message Is: "+dec);
         
-        
+        //the bits in our array from decodinfile
         System.out.println(Arrays.toString(codings));
         //codings=decode.readHufFile(args[0]);
         //Now you have an int Array with all bits and the root node of the tree
