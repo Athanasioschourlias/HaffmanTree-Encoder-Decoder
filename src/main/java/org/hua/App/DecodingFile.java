@@ -42,7 +42,7 @@ public class DecodingFile
             for(int j=0;j< data.length-3;j++)
             {
                 bits = fromByte(data[j]);
-                System.out.println(bits);
+                //System.out.println(bits);
                 int[] intArray = bits2Ints(bits);
 
 
