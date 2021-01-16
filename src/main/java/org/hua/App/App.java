@@ -1,8 +1,7 @@
 
 package org.hua.App;
 
-        import java.io.File;
-        import java.io.FileNotFoundException;
+import java.io.FileNotFoundException;
 
 public class App
 {
