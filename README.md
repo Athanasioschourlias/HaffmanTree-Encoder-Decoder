@@ -1,4 +1,4 @@
-# Lab HashMap
+# Huffman Tree
 
 This code is part of an exercise for the Data Structures course at Harokopio
 University of Athens, Dept. of Informatics and Telematics.
