@@ -24,11 +24,11 @@ public class DecodingFile
     }
 
     private  int[] bits2Ints(BitSet bs) {
-        int[] temp = new int[bs.size() / 1];
+        int[] temp = new int[bs.size()];
 
         for (int i = 0; i < temp.length; i++)
             for (int j = 0; j < 1; j++)
-                if (bs.get(i * 1 + j))
+                if (bs.get(i + j))
                     temp[i] |= 1 << j;
 
         return temp;
